@@ -56,6 +56,7 @@
   height: 100%;
   perspective: 1000px;
   pointer-events: none; /* decorative, doesn't block clicks */
+  overflow: hidden; /* prevent cards spilling on mobile */
 }
 .tech-card {
   position: absolute;
@@ -73,7 +74,9 @@
   will-change: transform;
   opacity: 0.98;
   z-index: 0; /* sit beneath main content */
-  transform: rotateX(15deg) rotateY(-15deg) translate3d(var(--tx,0px), var(--ty,0px), 0);
+  /* translate combines parallax (--tx, --ty) and float (--dx, --dy) */
+  transform: rotateX(15deg) rotateY(-15deg)
+             translate3d(calc(var(--tx,0px) + var(--dx,0px)), calc(var(--ty,0px) + var(--dy,0px)), 0);
   animation: floatTechCard 6s ease-in-out infinite;
 }
 .tech-card img {
@@ -89,20 +92,22 @@
   z-index: 10;
 }
 @media (max-width: 900px) {
+  /* Match desktop layout proportions on mobile */
   .tech-stack-3d-cards {
     left: 50%;
-    top: 0;
-    transform: translate(-50%, 0);
-    width: 320px;
-    height: 260px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
   }
+  /* Keep card size consistent to desktop for visual parity */
   .tech-card {
-    width: 64px;
-    height: 82px;
+    width: 68px;
+    height: 88px;
   }
   .tech-card img {
-    max-width: 32px;
-    max-height: 32px;
+    max-width: 36px;
+    max-height: 36px;
   }
 }
 

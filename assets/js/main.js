@@ -1,38 +1,68 @@
-// Floating 3D Tech Stack Cards Animation
+// Floating 3D Tech Stack Cards Animation (responsive + bounded)
 document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".tech-card");
+  const root =
+    document.querySelector('#skills .tech-stack-3d-cards') ||
+    document.querySelector('.tech-stack-3d-cards');
+  const cards = root ? root.querySelectorAll('.tech-card') : document.querySelectorAll('.tech-card');
   if (!cards.length) return;
-  // Predefined positions for a nice spread (centered, not random on load)
-  const positions = [
-    { x: 10, y: 10 },
-    { x: 300, y: 30 },
-    { x: 180, y: 120 },
-    { x: 420, y: 90 },
-    { x: 80, y: 220 },
-    { x: 350, y: 200 },
-    { x: 220, y: 300 },
-    { x: 500, y: 250 },
-    { x: 400, y: 320 },
+
+  // Relative layout points (px computed from container size)
+  const layoutDesktop = [
+    [0.15, 0.18],
+    [0.65, 0.16],
+    [0.82, 0.42],
+    // Tailwind CSS (spread a bit higher/left)
+    [0.20, 0.60],
+    [0.50, 0.80],
+    // Next.js (nudge to the right)
+    [0.60, 0.50],
+    // MySQL (shift down-left)
+    [0.30, 0.40],
+    [0.72, 0.68],
+    [0.08, 0.48],
   ];
-  cards.forEach((card, i) => {
-    card.style.left = positions[i].x + "px";
-    card.style.top = positions[i].y + "px";
-    card.style.transform = `rotateZ(${Math.random() * 16 - 8}deg) scale(1)`;
-  });
-  // Animate each card in a smooth, random, floating 3D path
+  const layoutMobile = [
+    [0.18, 0.18],
+    [0.82, 0.18],
+    [0.82, 0.44],
+    [0.18, 0.52], // Tailwind: left-middle for clarity
+    [0.50, 0.62],
+    [0.50, 0.38],
+    [0.22, 0.72],
+    [0.78, 0.62],
+    [0.10, 0.32],
+  ];
+
+  const placeCards = () => {
+    const rect = root?.getBoundingClientRect();
+    const cw = Math.max((rect?.width || window.innerWidth), 240);
+    const ch = Math.max((rect?.height || 300), 220);
+    const set = cw <= 380 || window.innerWidth <= 900 ? layoutMobile : layoutDesktop;
+    cards.forEach((card, i) => {
+      const [px, py] = set[i % set.length];
+      const x = Math.max(0, Math.min(cw - card.offsetWidth, px * cw - card.offsetWidth / 2));
+      const y = Math.max(0, Math.min(ch - card.offsetHeight, py * ch - card.offsetHeight / 2));
+      card.style.left = `${x}px`;
+      card.style.top = `${y}px`;
+      // Reset transform here; actual motion uses CSS vars combined in CSS
+      card.style.transform = '';
+      card.style.setProperty('--dx', '0px');
+      card.style.setProperty('--dy', '0px');
+    });
+  };
+
+  placeCards();
+  window.addEventListener('resize', placeCards, { passive: true });
+
+  // Subtle float motion using CSS variables so it composes with parallax
   function animateCard(card, i) {
     let angle = Math.random() * Math.PI * 2;
-    let radius = 18 + Math.random() * 22;
-    let z = Math.random() * 16 - 8;
-    let baseX = positions[i].x,
-      baseY = positions[i].y;
+    let radius = 10 + Math.random() * 14; // smaller radius to avoid overflow
     function frame(t) {
       const dx = Math.cos(angle + t / 1800 + i) * radius;
       const dy = Math.sin(angle + t / 1800 + i) * radius;
-      const dz = Math.sin(angle + t / 1200 + i) * z;
-      card.style.transform = `translate3d(${dx}px,${dy}px,${dz}px) rotateZ(${
-        z + dx / 4
-      }deg) scale(1.01)`;
+      card.style.setProperty('--dx', `${dx}px`);
+      card.style.setProperty('--dy', `${dy}px`);
       requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
@@ -66,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Make sure this runs after the HTML is loaded
 const typed = new Typed(".text", {
-  strings: ["Frontend Developer."],
+  strings: ["Frontend Developer.", "Data Scientist", "Data Analyst."],
   typeSpeed: 100, // typing speed (ms per character)
   backSpeed: 60, // backspacing speed
   backDelay: 1000, // pause before erasing
@@ -405,10 +435,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const cards = skillsCardsRoot.querySelectorAll('.tech-card');
 
     // Tooltip element that follows cursor
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
     const tooltip = document.createElement('div');
     tooltip.className = 'tech-tooltip';
     tooltip.hidden = true;
-    document.body.appendChild(tooltip);
+    if (!isTouch) document.body.appendChild(tooltip);
 
     const handleMouse = (e) => {
       const mouseX = e.clientX;
@@ -440,9 +471,11 @@ document.addEventListener("DOMContentLoaded", () => {
         tooltip.hidden = true;
       }
     };
-    window.addEventListener('mousemove', handleMouse, { passive: true });
-    window.addEventListener('mouseleave', () => { tooltip.hidden = true; }, { passive: true });
-    window.addEventListener('scroll', () => { tooltip.hidden = true; }, { passive: true });
+    if (!isTouch) {
+      window.addEventListener('mousemove', handleMouse, { passive: true });
+      window.addEventListener('mouseleave', () => { tooltip.hidden = true; }, { passive: true });
+      window.addEventListener('scroll', () => { tooltip.hidden = true; }, { passive: true });
+    }
   }
 });
 
