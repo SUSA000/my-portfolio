@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sushan Tharuka | Portfolio</title>
+    <meta
+      name="description"
+      content="Personal portfolio of Sushan Tharuka – Front-End Developer specializing in modern web applications, responsive design, and performance optimization."
+    />
+    <meta name="author" content="Sushan Tharuka" />
+    <meta property="og:title" content="Sushan Tharuka | Portfolio" />
+    <meta
+      property="og:description"
+      content="Front-End Developer portfolio showcasing projects, skills, and experience."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourdomain.com" />
+    <meta property="og:image" content="assets/img/og-image.jpg" />
+    <link rel="canonical" href="https://yourdomain.com" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+  </head>
+  <body>
+    <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+    <canvas id="canvas-bg"></canvas>
+    
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" role="banner">
+      <nav class="nav" aria-label="Primary navigation">
+        <div class="logo" aria-label="Home"><a href="#hero" title="Go to Home">ST</a></div>
+        <button
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          aria-label="Menu"
+        >
+          ☰
+        </button>
+        <ul id="nav-menu" class="nav-menu">
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li>
+            <a href="assets/img/sushan%20tharuka%20cv%20spar.pdf" download aria-label="Download CV">Resume</a>
+          </li>
+          <li><a href="#contact" class="talk-link">Let's Talk</a></li>
+          <li>
+            <button
+              id="themeToggle"
+              class="theme-toggle"
+              aria-label="Toggle dark mode"
+            >
+              <span class="toggle-glyph" aria-hidden="true"></span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <!-- Hero Section -->
+      <section id="hero" class="hero" aria-labelledby="hero-heading">
+        <div class="hero-layout">
+          <div class="hero-left">
+            <p class="hero-greeting" id="hero-heading">Hello, It's Me</p>
+            <h1 class="hero-name">
+              <span class="accent">Sushan Tharuka</span>
+            </h1>
+            <h2 class="hero-role">And I'm a <span class="text"></span></h2>
+            <p class="hero-description">
+              Front-End developer crafting modern, accessible & performant web
+              experiences focused on usability, clarity, and delightful motion.
+            </p>
+            <div class="hero-actions">
+              <a
+                href="assets/img/sushan%20tharuka%20cv%20spar.pdf"
+                class="btn btn-download"
+                download
+                aria-label="Download CV"
+              >
+                <span class="btn-text">Download CV</span>
+                <i class="bx bx-download" aria-hidden="true"></i>
+              </a>
+              <a href="#contact" class="btn outline cta-outline">Get In Touch</a>
+            </div>
+            <ul class="hero-social" role="list" aria-label="Social links">
+              <li>
+                <a
+                  href="https://www.facebook.com/sushan.tharuka"
+                  aria-label="Facebook"
+                  target="_blank"
+                  rel="noopener"
+                  ><i class="bx bxl-facebook"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://instagram.com/sushantharuka/"
+                  aria-label="Instagram"
+                  target="_blank"
+                  rel="noopener"
+                  ><i class="bx bxl-instagram"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/SUSA000"
+                  aria-label="GitHub"
+                  target="_blank"
+                  rel="noopener"
+                  ><i class="bx bxl-github"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/sushan-tharuka-00a496311/"
+                  aria-label="LinkedIn"
+                  target="_blank"
+                  rel="noopener"
+                  ><i class="bx bxl-linkedin"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://tiktok.com/@susa4553"
+                  aria-label="TikTok"
+                  target="_blank"
+                  rel="noopener"
+                  ><i class="bx bxl-tiktok"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+          <div class="hero-right">
+            <div class="profile-wrapper">
+              <div class="profile-rings" aria-hidden="true"></div>
+              <img
+                src="assets/img/profile.jpg"
+                alt="Profile portrait"
+                loading="lazy"
+                class="profile-img"
+              />
+            </div>
+            <div class="hero-shapes" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section
+        id="about"
+        class="about-section section"
+        aria-labelledby="about-title"
+      >
+        <div class="about-header">
+          <h2 id="about-title">About <span class="accent">Me</span></h2>
+          <p class="about-subtitle">
+            Data-driven problem solver turning raw data into clear, actionable
+            insight.
+          </p>
+        </div>
+        <div class="about-grid">
+          <!-- Left Column: Identity & Description -->
+          <div class="about-left">
+            <header class="about-identity">
+              <h3 class="about-name">Sushan Tharuka</h3>
+              <p class="about-role">Data Science Undergraduate at SLIIT</p>
+            </header>
+            <div id="about-desc" class="about-description collapsed" aria-live="polite">
+              <p>
+                I’m a second-year Data Science undergraduate at SLIIT, building
+                a strong foundation in statistics, machine learning, and
+                software development. I enjoy turning raw data into clear
+                insights and practical solutions, whether through data
+                visualisation, predictive models, or clean analytical
+                dashboards.
+              </p>
+              <p>
+                Over the past two years, I’ve worked on academic and personal
+                projects involving data cleaning, exploratory analysis, and
+                simple ML models, and I’m continuously improving my skills in
+                Python, SQL, and modern data tools. My goal is to grow into a
+                data professional who can collaborate with teams to solve
+                real-world problems in areas like business analytics, finance,
+                and product optimisation.
+              </p>
+              <p>
+                Outside of coursework, I like experimenting with new libraries,
+                following industry best practices, and learning how to
+                communicate technical results in a way that non-technical people
+                can understand. I’m currently focused on strengthening my
+                portfolio with real datasets, collaborative projects, and
+                internships related to the data science field.
+              </p>
+            </div>
+            <button class="read-more-toggle" aria-expanded="false" aria-controls="about-desc">Read more</button>
+            <ul class="about-skills" role="list" aria-label="Key skills">
+              <li>Data Analysis</li>
+              <li>Python &amp; SQL</li>
+              <li>Machine Learning Basics</li>
+              <li>Problem Solving</li>
+              <li>Team Collaboration</li>
+            </ul>
+          </div>
+          <!-- Right Column: Timeline Journey -->
+          <div class="about-right">
+            <div class="about-timeline" aria-label="Learning journey timeline">
+              <article class="timeline-card" aria-labelledby="tl-2023-ds">
+                <div class="card-icon">
+                  <i class="bx bx-brain" aria-hidden="true"></i>
+                </div>
+                <div class="card-content">
+                  <span class="year-badge">2023</span>
+                  <h4 id="tl-2023-ds" class="card-title">
+                    Started Data Science Degree
+                  </h4>
+                  <p class="card-text">
+                    Began my academic journey in Data Science at SLIIT, focusing
+                    on fundamentals.
+                  </p>
+                </div>
+              </article>
+              <article class="timeline-card" aria-labelledby="tl-2024-projects">
+                <div class="card-icon">
+                  <i class="bx bx-bar-chart-alt" aria-hidden="true"></i>
+                </div>
+                <div class="card-content">
+                  <span class="year-badge">2024</span>
+                  <h4 id="tl-2024-projects" class="card-title">
+                    Academic Data Projects
+                  </h4>
+                  <p class="card-text">
+                    Worked on exploratory analysis &amp; cleaning for course and
+                    personal datasets.
+                  </p>
+                </div>
+              </article>
+              <article class="timeline-card" aria-labelledby="tl-2025-ml">
+                <div class="card-icon">
+                  <i class="bx bx-line-chart" aria-hidden="true"></i>
+                </div>
+                <div class="card-content">
+                  <span class="year-badge">2025</span>
+                  <h4 id="tl-2025-ml" class="card-title">
+                    ML &amp; Analytics Focus
+                  </h4>
+                  <p class="card-text">
+                    Building predictive models &amp; dashboards; aiming for
+                    internships &amp; real datasets.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+        <!-- Stats Row -->
+        <div class="about-stats" aria-label="Quick stats">
+          <div class="stat-card">
+            <div class="stat-value">2</div>
+            <div class="stat-label">Years Learning</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">5+</div>
+            <div class="stat-label">Academic Projects</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">3+</div>
+            <div class="stat-label">ML / Analytics Mini-Projects</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">∞</div>
+            <div class="stat-label">Lines of Code</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section
+        id="skills"
+        class="section skills-orbit-section"
+        aria-labelledby="skills-heading"
+      >
+        <div class="container">
+          <h2 id="skills-heading" class="skills-modern-heading">
+            <span>My</span> <span class="skills-highlight">Skills</span>
+          </h2>
+          <p class="skills-modern-desc">
+            A diverse set of technical skills that I've developed through
+            continuous learning and hands-on projects over 2 years of dedicated
+            learning and 6 months of practical experience.
+          </p>
+          <div class="skills-two-col">
+            <div class="skills-left">
+              <div class="tech-stack-3d-bg">
+                <div class="tech-stack-3d-cards">
+                  <div class="tech-card" data-logo="next">
+                    <img src="assets\img\php01-svgrepo-com.svg" alt="Next.js" />
+                  </div>
+                  <div class="tech-card" data-logo="react">
+                    <img src="assets\img\react-svgrepo-com.svg" alt="React" />
+                  </div>
+                  <div class="tech-card" data-logo="ts">
+                    <img
+                      src="assets\img\typescript-official-svgrepo-com.svg"
+                      alt="TypeScript"
+                    />
+                  </div>
+                  <div class="tech-card" data-logo="tailwind">
+                    <img
+                      src="assets\img\tailwind-css-svgrepo-com (1).svg"
+                      alt="Tailwind CSS"
+                    />
+                  </div>
+                  <div class="tech-card" data-logo="js">
+                    <img
+                      src="assets\img\javascript-155-svgrepo-com.svg"
+                      alt="JavaScript"
+                    />
+                  </div>
+                  <div class="tech-card" data-logo="php">
+                    <img
+                      src="assets\img\nextjs-icon-svgrepo-com.svg"
+                      alt="PHP"
+                    />
+                  </div>
+                  <div class="tech-card" data-logo="mysql">
+                    <img
+                      src="assets\img\mysql-logo-svgrepo-com.svg"
+                      alt="MySQL"
+                    />
+                  </div>
+                  <div class="tech-card" data-logo="firebase">
+                    <img
+                      src="assets\img\firebase-svgrepo-com.svg"
+                      alt="Firebase"
+                    />
+                  </div>
+                  <div class="tech-card" data-logo="lightning">
+                    <img
+                      src="assets\img\lightning-svgrepo-com.svg"
+                      alt="Lightning"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="skills-right">
+              <div class="skills-modern-flex">
+                <div class="skills-modern-card">
+                  <h3 class="skills-modern-title">Frontend</h3>
+                  <div class="skills-modern-list">
+                    <div class="skills-modern-item">
+                      <span class="skills-modern-name">Next.js</span>
+                      <div class="skills-modern-bar">
+                        <div
+                          class="skills-modern-progress"
+                          data-width="80%"
+                        ></div>
+                      </div>
+                      <span class="skills-modern-percent">80%</span>
+                    </div>
+                    <div class="skills-modern-item">
+                      <span class="skills-modern-name">React</span>
+                      <div class="skills-modern-bar">
+                        <div
+                          class="skills-modern-progress"
+                          data-width="85%"
+                        ></div>
+                      </div>
+                      <span class="skills-modern-percent">85%</span>
+                    </div>
+                    <div class="skills-modern-item">
+                      <span class="skills-modern-name">TypeScript</span>
+                      <div class="skills-modern-bar">
+                        <div
+                          class="skills-modern-progress"
+                          data-width="75%"
+                        ></div>
+                      </div>
+                      <span class="skills-modern-percent">75%</span>
+                    </div>
+                    <div class="skills-modern-item">
+                      <span class="skills-modern-name">Tailwind CSS</span>
+                      <div class="skills-modern-bar">
+                        <div
+                          class="skills-modern-progress"
+                          data-width="90%"
+                        ></div>
+                      </div>
+                      <span class="skills-modern-percent">90%</span>
+                    </div>
+                    <div class="skills-modern-item">
+                      <span class="skills-modern-name">JavaScript</span>
+                      <div class="skills-modern-bar">
+                        <div
+                          class="skills-modern-progress"
+                          data-width="83%"
+                        ></div>
+                      </div>
+                      <span class="skills-modern-percent">83%</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="skills-modern-card">
+                  <h3 class="skills-modern-title">Tools &amp; Others</h3>
+                  <div class="skills-modern-list">
+                    <div class="skills-modern-item">
+                      <span class="skills-modern-name">Git</span>
+                      <div class="skills-modern-bar">
+                        <div
+                          class="skills-modern-progress"
+                          data-width="80%"
+                        ></div>
+                      </div>
+                      <span class="skills-modern-percent">80%</span>
+                    </div>
+                    <div class="skills-modern-item">
+                      <span class="skills-modern-name">VS Code</span>
+                      <div class="skills-modern-bar">
+                        <div
+                          class="skills-modern-progress"
+                          data-width="90%"
+                        ></div>
+                      </div>
+                      <span class="skills-modern-percent">90%</span>
+                    </div>
+                    <div class="skills-modern-item">
+                      <span class="skills-modern-name">Figma</span>
+                      <div class="skills-modern-bar">
+                        <div
+                          class="skills-modern-progress"
+                          data-width="60%"
+                        ></div>
+                      </div>
+                      <span class="skills-modern-percent">60%</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="skills-modern-card">
+                  <h3 class="skills-modern-title">Backend</h3>
+                  <div class="skills-modern-list">
+                    <div class="skills-modern-item">
+                      <span class="skills-modern-name">PHP</span>
+                      <div class="skills-modern-bar">
+                        <div
+                          class="skills-modern-progress"
+                          data-width="70%"
+                        ></div>
+                      </div>
+                      <span class="skills-modern-percent">70%</span>
+                    </div>
+                    <div class="skills-modern-item">
+                      <span class="skills-modern-name">MySQL</span>
+                      <div class="skills-modern-bar">
+                        <div
+                          class="skills-modern-progress"
+                          data-width="75%"
+                        ></div>
+                      </div>
+                      <span class="skills-modern-percent">75%</span>
+                    </div>
+                    <div class="skills-modern-item">
+                      <span class="skills-modern-name">Firebase</span>
+                      <div class="skills-modern-bar">
+                        <div
+                          class="skills-modern-progress"
+                          data-width="65%"
+                        ></div>
+                      </div>
+                      <span class="skills-modern-percent">65%</span>
+                    </div>
+                    <div class="skills-modern-item">
+                      <span class="skills-modern-name">Supabase</span>
+                      <div class="skills-modern-bar">
+                        <div
+                          class="skills-modern-progress"
+                          data-width="60%"
+                        ></div>
+                      </div>
+                      <span class="skills-modern-percent">60%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Technologies Tag Cloud (inlined into Skills) -->
+        <div class="tech-cloud-section">
+          <h2 class="tech-cloud-title">Technologies I Work With</h2>
+          <ul class="tech-cloud-list" role="list">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>SASS</li>
+            <li>Bootstrap</li>
+            <li>Tailwind CSS</li>
+            <li>JavaScript</li>
+            <li>TypeScript</li>
+            <li>React</li>
+            <li>Next.js</li>
+            <li>Node.js</li>
+            <li>PHP</li>
+            <li>MySQL</li>
+            <li>REST APIs</li>
+            <li>JSON</li>
+            <li>Git</li>
+            <li>GitHub</li>
+            <li>VS Code</li>
+            <li>Figma</li>
+            <li>AWS</li>
+            <li>Firebase</li>
+            <li>Supabase</li>
+            <li>Vercel</li>
+            <li>Resend</li>
+            <li>Bun</li>
+            <li>NPM</li>
+            <li>Yarn</li>
+            <li>ESLint</li>
+            <li>Prettier</li>
+            <li>Responsive Design</li>
+            <li>SEO</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="section" aria-labelledby="projects-heading">
+        <div class="container">
+          <header class="projects-header">
+            <h2 id="projects-heading" class="projects-title">
+              Featured <span class="accent">Projects</span>
+            </h2>
+            <p class="projects-subtitle">
+              A showcase of my development journey through various projects that
+              demonstrate my technical skills and problem-solving abilities,
+              built over 2 years of learning and 6 months of hands-on
+              experience.
+            </p>
+          </header>
+
+          <div id="projects-grid" class="projects-grid" aria-live="polite">
+            <!-- Dynamic project cards injected by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience Section -->
+      <section
+        id="experience"
+        class="section experience-section"
+        aria-labelledby="experience-heading"
+      >
+        <div class="container">
+          <h2 id="experience-heading" class="exp-title">
+            <span class="accent">My</span> Experience
+          </h2>
+          <p class="exp-subtitle">
+            Data Science undergraduate focused on practical analysis, machine
+            learning, and clear communication of insights.
+          </p>
+          <div class="exp-grid">
+            <!-- Card: Undergraduate -->
+            <article class="exp-card" aria-label="Data Science Undergraduate">
+              <div class="exp-card-top">
+                <span class="exp-badge">Undergraduate</span>
+                <h3 class="exp-role">Data Science Undergraduate</h3>
+              </div>
+              <ul class="exp-meta" role="list">
+                <li>
+                  <i class="bx bx-buildings" aria-hidden="true"></i> SLIIT
+                </li>
+                <li>
+                  <i class="bx bx-time" aria-hidden="true"></i> 2023 – Present
+                </li>
+                <li>
+                  <i class="bx bx-map" aria-hidden="true"></i> Colombo / Remote
+                </li>
+              </ul>
+              <p class="exp-desc">
+                Building a strong foundation in statistics, data wrangling, and
+                ML. Turning raw data into clear, actionable insights through
+                clean code and effective visuals.
+              </p>
+              <h4 class="exp-subhead">Key Achievements:</h4>
+              <ul class="exp-bullets" role="list">
+                <li>
+                  Completed EDA dashboards using Python, Pandas, NumPy and
+                  Matplotlib.
+                </li>
+                <li>
+                  Built baseline ML models (classification/regression) with
+                  scikit‑learn.
+                </li>
+                <li>
+                  Prepared datasets: cleaning, feature engineering, and
+                  train/test evaluation.
+                </li>
+                <li>
+                  Presented insights with concise visuals and simple narratives.
+                </li>
+              </ul>
+              <div class="exp-tech">
+                <span>Python</span><span>Pandas</span><span>NumPy</span
+                ><span>scikit‑learn</span><span>SQL</span><span>Matplotlib</span
+                ><span>Seaborn</span>
+              </div>
+            </article>
+
+            <!-- Card: Student Projects -->
+            <article class="exp-card" aria-label="Student Data Projects">
+              <div class="exp-card-top">
+                <span class="exp-badge">Self‑Learning</span>
+                <h3 class="exp-role">Student Data Projects</h3>
+              </div>
+              <ul class="exp-meta" role="list">
+                <li>
+                  <i class="bx bx-bulb" aria-hidden="true"></i> Personal
+                  Projects
+                </li>
+                <li>
+                  <i class="bx bx-time" aria-hidden="true"></i> 2023 – Present
+                </li>
+                <li><i class="bx bx-home" aria-hidden="true"></i> Remote</li>
+              </ul>
+              <p class="exp-desc">
+                Hands‑on learning through real datasets and small analytics
+                projects with a focus on trustworthy results and readable code.
+              </p>
+              <h4 class="exp-subhead">Key Achievements:</h4>
+              <ul class="exp-bullets" role="list">
+                <li>
+                  Kaggle notebooks exploring cleaning, visualization, and model
+                  baselines.
+                </li>
+                <li>
+                  Built simple ETL scripts for CSV/JSON APIs and local storage.
+                </li>
+                <li>
+                  Versioned projects with Git/GitHub and wrote clear READMEs.
+                </li>
+                <li>
+                  Improved communication by summarizing findings for
+                  non‑technical peers.
+                </li>
+              </ul>
+              <div class="exp-tech">
+                <span>Jupyter</span><span>Kaggle</span><span>Seaborn</span
+                ><span>Power BI</span><span>Git</span><span>GitHub</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section
+        id="contact"
+        class="section contact-section"
+        aria-labelledby="contact-heading"
+      >
+        <div class="container">
+          <h2 id="contact-heading" class="contact-title">
+            Contact <span class="accent-grad">Me</span>
+          </h2>
+          <div class="contact-grid">
+            <form
+              id="contactForm"
+              class="contact-form"
+              method="POST"
+              action="https://formsubmit.co/tharukasusa2023@gmail.com"
+              aria-describedby="form-status"
+            >
+              <div class="contact-left">
+                <div class="form-group">
+                  <label for="name">Full Name</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    minlength="2"
+                    placeholder="Full Name"
+                  />
+                  <small class="error" data-for="name"></small>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input
+                    class="form-control"
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="Email"
+                  />
+                  <small class="error" data-for="email"></small>
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input
+                    class="form-control"
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="Phone Number"
+                  />
+                  <small class="error" data-for="phone"></small>
+                </div>
+                <div class="form-group">
+                  <label for="subject">Subject</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="subject"
+                    name="_subject"
+                    required
+                    placeholder="Subject"
+                  />
+                  <small class="error" data-for="subject"></small>
+                </div>
+              </div>
+              <div class="contact-right">
+                <div class="form-group">
+                  <label for="message">Your Message</label>
+                  <textarea
+                    class="form-control"
+                    id="message"
+                    name="message"
+                    rows="8"
+                    required
+                    minlength="10"
+                    placeholder="Your Message"
+                  ></textarea>
+                  <small class="error" data-for="message"></small>
+                </div>
+                <!-- FormSubmit anti-spam and options -->
+                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_next" value="index.html#contact-success" />
+                <button type="submit" class="contact-submit">
+                  Send Message
+                </button>
+                <p id="form-status" role="status" aria-live="polite" class="form-status" hidden></p>
+              </div>
+            </form>
+            <div id="contact-success" class="contact-success" role="status" aria-live="polite">
+              <strong>Thank you!</strong> Your message was sent successfully.
+            </div>
+            <div class="alt-contact">
+              <p>
+                Prefer email?
+                <a href="mailto:tharukasusa2023@gmail.com"
+                  >tharukasusa2023@gmail.com</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-center">
+        <ul class="footer-social" role="list" aria-label="Social links">
+          <li>
+            <a
+              class="social-icon"
+              href="https://github.com/SUSA000"
+              target="_blank"
+              rel="noopener"
+              aria-label="GitHub"
+              ><i class="bx bxl-github"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              class="social-icon"
+              href="https://www.linkedin.com/in/sushan-tharuka-00a496311/"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn"
+              ><i class="bx bxl-linkedin"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              class="social-icon"
+              href="https://instagram.com/yourprofile"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+              ><i class="bx bxl-instagram"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              class="social-icon"
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener"
+              aria-label="Twitter"
+              ><i class="bx bxl-twitter"></i
+            ></a>
+          </li>
+        </ul>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <p class="footer-copy">
+          &copy; <span id="year"></span> @ Sushan Tharuka. All rights reserved.
+        </p>
+        <button class="scroll-top" aria-label="Scroll to top">↑</button>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>

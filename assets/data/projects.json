@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Responsive Portfolio",
+    "description": "A modern, accessible personal site with dark mode and dynamic project loading.",
+    "tags": ["HTML", "CSS", "JavaScript"],
+    "demo": "https://yourdomain.com/portfolio",
+    "source": "https://github.com/yourusername/portfolio",
+    "image": "assets/img/Screenshot 2025-12-20 130551.png"
+  },
+  {
+    "name": "Weather Dashboard",
+    "description": "Weather app consuming public API with geolocation and cached results for performance.",
+    "tags": ["API", "JavaScript", "Async"],
+    "demo": "https://yourdomain.com/weather",
+    "source": "https://github.com/yourusername/weather-dashboard",
+    "image": "assets/img/is-web-development-required-for-data-scientist-1.webp"
+  },
+  {
+    "name": "Task Tracker",
+    "description": "Productivity task tracker featuring filtering, localStorage persistence and drag & drop reordering.",
+    "tags": ["Productivity", "LocalStorage", "DragDrop"],
+    "demo": "https://yourdomain.com/task-tracker",
+    "source": "https://github.com/yourusername/task-tracker",
+    "image": "assets/img/1712497454927.jpg"
+  },
+  {
+    "name": "CSS Design System",
+    "description": "A lightweight design system with utility classes and component examples.",
+    "tags": ["Design System", "CSS", "Docs"],
+    "demo": "https://yourdomain.com/design-system",
+    "source": "https://github.com/yourusername/design-system",
+    "image": "assets/img/1_Sz3KyFn9rdM9M3pHEHScSA.jpg"
+  }
+]
