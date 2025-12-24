@@ -171,21 +171,41 @@ const typed = new Typed(".text", {
     projects.forEach((p) => {
       const card = document.createElement("div");
       card.className = "project-card fade-in";
-      const reviewHref = p.demo || p.source || "#";
+      const demoHref = p.demo || "";
+      const codeHref = p.source || "";
       const thumbStyle = p.image
         ? `style=\"background-image:url('${p.image}')\"`
         : "";
+      const demoBtn = demoHref
+        ? `<a class="btn-demo" href="${demoHref}" target="_blank" rel="noopener" aria-label="Live demo for ${p.name}">
+             <span class="btn-icon" aria-hidden="true">
+               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M14 3h7v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                 <path d="M10 14L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                 <path d="M14 10v7a4 4 0 0 1-4 4H5a4 4 0 0 1-4-4v-5a4 4 0 0 1 4-4h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+               </svg>
+             </span>
+             <span class="btn-text">Live Demo</span>
+           </a>`
+        : "";
+      const codeBtn = codeHref
+        ? `<a class="btn-code" href="${codeHref}" target="_blank" rel="noopener" aria-label="View code for ${p.name}">
+             <span class="btn-icon" aria-hidden="true">
+               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M12 .5a12 12 0 0 0-3.794 23.41c.6.111.82-.26.82-.58l-.016-2.038c-3.338.726-4.042-1.61-4.042-1.61-.547-1.389-1.337-1.76-1.337-1.76-1.093-.747.082-.732.082-.732 1.208.085 1.844 1.24 1.844 1.24 1.074 1.84 2.819 1.309 3.507 1.001.108-.787.42-1.31.763-1.612-2.665-.303-5.466-1.332-5.466-5.932 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.523.117-3.176 0 0 1.007-.322 3.3 1.23.957-.266 1.983-.399 3.004-.404 1.02.005 2.046.138 3.005.404 2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.243 2.873.12 3.176.77.84 1.236 1.911 1.236 3.221 0 4.61-2.807 5.625-5.48 5.922.432.372.818 1.103.818 2.222l-.015 3.293c0 .323.216.7.826.579A12 12 0 0 0 12 .5Z"/>
+               </svg>
+             </span>
+             <span class="btn-text">View Code</span>
+           </a>`
+        : "";
+
       card.innerHTML = `
         <div class="project-thumb" ${thumbStyle} aria-hidden="true"></div>
         <h3 class="project-title">${p.name}</h3>
         <p class="project-desc">${p.description}</p>
-        <div class="project-tags">${p.tags
-          .map((t) => `<span>${t}</span>`)
-          .join("")}</div>
+        <div class="project-tags">${p.tags.map((t) => `<span>${t}</span>`).join("")}</div>
         <div class="project-links">
-          <a href="${reviewHref}" target="_blank" rel="noopener" aria-label="Review ${
-        p.name
-      }">Review Project</a>
+          ${demoBtn}${codeBtn}
         </div>
       `;
       fragment.appendChild(card);

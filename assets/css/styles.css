@@ -1690,25 +1690,43 @@ select {
   font-size: 0.9rem;
   text-decoration: none;
   padding: 0.68rem 1.15rem;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #ff8a3d 0%, #ff6a00 100%);
-  color: #06131a !important;
+  border-radius: 8px;
   font-weight: 700;
-  box-shadow: 0 0 10px rgba(255, 138, 61, 0.65),
-    0 0 28px rgba(255, 138, 61, 0.35);
-  border: 1px solid rgba(255, 138, 61, 0.65);
-  transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
-.project-links a:hover {
-  filter: brightness(1.12);
+/* Orange filled primary */
+.project-links .btn-demo {
+  background: linear-gradient(180deg, #ff8a3d 0%, #ff6a00 100%);
+  color: #06131a;
+  border-color: rgba(255, 138, 61, 0.65);
+  box-shadow: 0 0 10px rgba(255, 138, 61, 0.65), 0 0 28px rgba(255, 138, 61, 0.35);
+}
+.project-links .btn-demo:hover {
+  filter: brightness(1.05);
   transform: translateY(-2px);
-  box-shadow: 0 0 14px rgba(255, 138, 61, 0.75),
-    0 0 40px rgba(255, 138, 61, 0.45);
+  box-shadow: 0 0 14px rgba(255, 138, 61, 0.75), 0 0 40px rgba(255, 138, 61, 0.45);
+}
+/* Dark outlined secondary */
+.project-links .btn-code {
+  background: transparent;
+  color: #0f172a;
+  border-color: rgba(148, 163, 184, 0.45);
+}
+.project-links .btn-code:hover {
+  transform: translateY(-2px);
+  background: rgba(15, 23, 42, 0.06);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18);
 }
 .project-links a:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px #081b29, 0 0 0 5px rgba(255, 138, 61, 0.85);
 }
+.project-links .btn-icon svg { display:block }
+.project-links .btn-text { line-height: 1 }
 
 /* Thumbnail area inside project cards */
 .project-thumb {
@@ -1744,9 +1762,8 @@ select {
   color: rgba(239, 246, 255, 0.78);
 }
 /* Dark mode CTA text should be white for contrast */
-.dark-theme .project-links a {
-  color: #ffffff !important;
-}
+.dark-theme .project-links .btn-demo { color: #ffffff !important; }
+.dark-theme .project-links .btn-code { color: #ffffff !important; }
 
 /* Timeline */
 /* Experience cards */
