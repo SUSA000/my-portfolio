@@ -3,17 +3,17 @@
     "name": "Responsive Portfolio",
     "description": "A modern, accessible personal site with dark mode and dynamic project loading.",
     "tags": ["HTML", "CSS", "JavaScript"],
-    "demo": "https://yourdomain.com/portfolio",
-    "source": "https://github.com/yourusername/portfolio",
+    "demo": "https://susa000.github.io/my-portfolio/",
+    "source": "https://susa000.github.io/my-portfolio/",
     "image": "assets/img/Screenshot 2025-12-20 130551.png"
   },
   {
-    "name": "Weather Dashboard",
-    "description": "Weather app consuming public API with geolocation and cached results for performance.",
-    "tags": ["API", "JavaScript", "Async"],
-    "demo": "https://yourdomain.com/weather",
-    "source": "https://github.com/yourusername/weather-dashboard",
-    "image": "assets/img/is-web-development-required-for-data-scientist-1.webp"
+    "name": "FITPULES App",
+    "description": "FitPulse is a fitness app that helps you track workouts, stay active, and build healthy habits with ease.",
+    "tags": ["Android", "Kotlin", "Fragments"],
+    "demo": "https://drive.google.com/file/d/12fB3MXgRA_uS68ztAMG18WdhQAqW1tLM/view?usp=drivesdk",
+    "source": "https://github.com/yourusername/fitpules",
+    "image": "assets/img/FITPULES.jpg"
   },
   {
     "name": "Task Tracker",
