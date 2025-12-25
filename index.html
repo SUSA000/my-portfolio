@@ -677,7 +677,6 @@
               id="contactForm"
               class="contact-form"
               method="POST"
-              action="https://formsubmit.co/tharukasusa2023@gmail.com"
               aria-describedby="form-status"
             >
               <div class="contact-left">
@@ -687,7 +686,7 @@
                     class="form-control"
                     type="text"
                     id="name"
-                    name="name"
+                    name="full_name"
                     required
                     minlength="2"
                     placeholder="Full Name"
@@ -710,9 +709,9 @@
                   <label for="phone">Phone Number</label>
                   <input
                     class="form-control"
-                    type="tel"
+                    type="text"
                     id="phone"
-                    name="phone"
+                    name="phone_number"
                     placeholder="Phone Number"
                   />
                   <small class="error" data-for="phone"></small>
@@ -744,10 +743,6 @@
                   ></textarea>
                   <small class="error" data-for="message"></small>
                 </div>
-                <!-- FormSubmit anti-spam and options -->
-                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_next" value="index.html#contact-success" />
                 <button type="submit" class="contact-submit">
                   Send Message
                 </button>
@@ -830,6 +825,9 @@
       </div>
     </footer>
 
+    <!-- EmailJS SDK: required for email sending -->
+    <!-- Paste from CDN; keep before main.js so it's available -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
     <script src="assets/js/main.js" defer></script>
   </body>
 </html>

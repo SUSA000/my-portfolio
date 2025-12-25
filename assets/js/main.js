@@ -1,9 +1,9 @@
 // Floating 3D Tech Stack Cards Animation (responsive + bounded)
 document.addEventListener("DOMContentLoaded", () => {
   const root =
-    document.querySelector('#skills .tech-stack-3d-cards') ||
-    document.querySelector('.tech-stack-3d-cards');
-  const cards = root ? root.querySelectorAll('.tech-card') : document.querySelectorAll('.tech-card');
+    document.querySelector("#skills .tech-stack-3d-cards") ||
+    document.querySelector(".tech-stack-3d-cards");
+  const cards = root ? root.querySelectorAll(".tech-card") : document.querySelectorAll(".tech-card");
   if (!cards.length) return;
 
   // Relative layout points (px computed from container size)
@@ -45,14 +45,14 @@ document.addEventListener("DOMContentLoaded", () => {
       card.style.left = `${x}px`;
       card.style.top = `${y}px`;
       // Reset transform here; actual motion uses CSS vars combined in CSS
-      card.style.transform = '';
-      card.style.setProperty('--dx', '0px');
-      card.style.setProperty('--dy', '0px');
+      card.style.transform = "";
+      card.style.setProperty("--dx", "0px");
+      card.style.setProperty("--dy", "0px");
     });
   };
 
   placeCards();
-  window.addEventListener('resize', placeCards, { passive: true });
+  window.addEventListener("resize", placeCards, { passive: true });
 
   // Subtle float motion using CSS variables so it composes with parallax
   function animateCard(card, i) {
@@ -61,14 +61,15 @@ document.addEventListener("DOMContentLoaded", () => {
     function frame(t) {
       const dx = Math.cos(angle + t / 1800 + i) * radius;
       const dy = Math.sin(angle + t / 1800 + i) * radius;
-      card.style.setProperty('--dx', `${dx}px`);
-      card.style.setProperty('--dy', `${dy}px`);
+      card.style.setProperty("--dx", `${dx}px`);
+      card.style.setProperty("--dy", `${dy}px`);
       requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
   }
   cards.forEach(animateCard);
 });
+
 // Animate Technologies Tag Cloud on scroll
 document.addEventListener("DOMContentLoaded", () => {
   const techCloud = document.querySelector(".tech-cloud-list");
@@ -116,6 +117,27 @@ const typed = new Typed(".text", {
   const scrollTopBtn = document.querySelector(".scroll-top");
   const yearSpan = document.getElementById("year");
   const header = document.querySelector(".site-header");
+
+  // EmailJS configuration
+  // Paste your values below from your EmailJS dashboard
+  // - Public Key: emailjs.init({ publicKey: "YOUR_PUBLIC_KEY" })
+  // - Service ID: e.g., "service_xxxxx"
+  // - Template IDs: one for sending to you, one for auto-reply to sender
+  const EMAILJS_PUBLIC_KEY = "Jb3Iz7SkqV5-nbP7y"; // <-- provided by you
+  const EMAILJS_SERVICE_ID = "service_9npwo1k"; // <-- provided by you
+  const EMAILJS_TEMPLATE_ID_OWNER = "template_q3sps2m"; // <-- provided by you
+  const EMAILJS_TEMPLATE_ID_AUTOREPLY = "template_rek4ysa"; // <-- provided by you
+  const PORTFOLIO_OWNER_NAME = "Sushan Tharuka"; // used in messages
+  const PORTFOLIO_OWNER_EMAIL = "tharukasusa2023@gmail.com"; // used in messages
+
+  try {
+    // Initialize EmailJS when SDK is present and a key exists
+    if (window.emailjs && EMAILJS_PUBLIC_KEY) {
+      emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+    }
+  } catch (e) {
+    console.warn("EmailJS init failed (SDK not loaded yet or bad key)", e);
+  }
 
   // Set current year
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
@@ -203,7 +225,9 @@ const typed = new Typed(".text", {
         <div class="project-thumb" ${thumbStyle} aria-hidden="true"></div>
         <h3 class="project-title">${p.name}</h3>
         <p class="project-desc">${p.description}</p>
-        <div class="project-tags">${p.tags.map((t) => `<span>${t}</span>`).join("")}</div>
+        <div class="project-tags">${p.tags
+          .map((t) => `<span>${t}</span>`)
+          .join("")}</div>
         <div class="project-links">
           ${demoBtn}${codeBtn}
         </div>
@@ -214,37 +238,37 @@ const typed = new Typed(".text", {
     projectsGrid.appendChild(fragment);
   }
 
-  // Contact Form Validation
+  // Contact Form Validation (null-safe)
   function validateField(field) {
-    const errorEl = contactForm.querySelector(
-      `.error[data-for="${field.name}"]`
-    );
+    if (!contactForm || !field) return true;
+    const errorEl = contactForm.querySelector(`.error[data-for="${field.name}"]`);
     let message = "";
     if (field.hasAttribute("required") && !field.value.trim()) {
       message = "This field is required";
     } else if (field.name === "email") {
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(field.value.trim()))
-        message = "Enter a valid email address";
+      if (!emailPattern.test(field.value.trim())) message = "Enter a valid email address";
     } else if (field.name === "name" && field.value.trim().length < 2) {
       message = "Name must be at least 2 characters";
     } else if (field.name === "message" && field.value.trim().length < 10) {
       message = "Message must be at least 10 characters";
     }
 
-    if (errorEl) {
-      errorEl.textContent = message;
-    }
+    if (errorEl) errorEl.textContent = message;
     return message === "";
   }
 
   function setupForm() {
     if (!contactForm) return;
 
-    const fields = ["name", "email", "message"].map((n) =>
-      contactForm.querySelector(`[name="${n}"]`)
-    );
-    fields.forEach((f) => {
+    const nameInput = contactForm.querySelector('[name="name"]');
+    const emailInput = contactForm.querySelector('[name="email"]');
+    const messageInput = contactForm.querySelector('[name="message"]');
+    const phoneInput = contactForm.querySelector('[name="phone"]');
+    const subjectInput = contactForm.querySelector('[name="_subject"]');
+
+    const inputs = [nameInput, emailInput, messageInput].filter(Boolean);
+    inputs.forEach((f) => {
       f.addEventListener("blur", () => validateField(f));
       f.addEventListener("input", () => validateField(f));
     });
@@ -253,7 +277,7 @@ const typed = new Typed(".text", {
       e.preventDefault();
       // Use HTML5 validation and our minimal checks
       let allValid = true;
-      fields.forEach((f) => {
+      inputs.forEach((f) => {
         if (!validateField(f)) allValid = false;
       });
       if (!contactForm.reportValidity() || !allValid) return;
@@ -271,25 +295,83 @@ const typed = new Typed(".text", {
       }
 
       try {
-        const endpoint = "https://formsubmit.co/ajax/tharukasusa2023@gmail.com";
-        const formData = new FormData(contactForm);
-        const res = await fetch(endpoint, {
-          method: "POST",
-          headers: { Accept: "application/json" },
-          body: formData,
+        // Gather values
+        const nameVal = nameInput?.value?.trim() || "";
+        const emailVal = emailInput?.value?.trim() || "";
+        const msgVal = messageInput?.value?.trim() || "";
+        const phoneVal = phoneInput?.value?.trim() || "";
+        const subjectVal = subjectInput?.value?.trim() || "Portfolio Contact";
+
+        if (!window.emailjs) throw new Error("EmailJS SDK not loaded");
+
+        // Ensure templates receive expected variable names via hidden aliases
+        const aliasDefs = [
+          { name: "from_name", value: nameVal },
+          { name: "from_email", value: emailVal },
+          { name: "message", value: msgVal },
+          { name: "subject", value: subjectVal },
+          { name: "phone", value: phoneVal },
+          // Auto-reply specific
+          { name: "to_email", value: emailVal },
+          { name: "to_name", value: nameVal },
+          { name: "original_subject", value: subjectVal },
+        ];
+        const createdAliases = [];
+        aliasDefs.forEach(({ name, value }) => {
+          // Only create if not already in form
+          if (!contactForm.querySelector(`[name="${name}"]`)) {
+            const input = document.createElement("input");
+            input.type = "hidden";
+            input.name = name;
+            input.value = value;
+            contactForm.appendChild(input);
+            createdAliases.push(input);
+          }
         });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        if (data.success) {
-          if (statusEl) statusEl.textContent = "Message sent successfully. Thank you!";
-          contactForm.reset();
-        } else {
-          throw new Error(data.message || "Unknown error");
-        }
+
+        // Use your variables for sendForm
+        const serviceID = EMAILJS_SERVICE_ID;
+        const templateID_Main = EMAILJS_TEMPLATE_ID_OWNER;
+        const templateID_Reply = EMAILJS_TEMPLATE_ID_AUTOREPLY;
+
+        // Start sending main email and inform the user immediately
+        const sendPromise = emailjs.sendForm(serviceID, templateID_Main, contactForm);
+        alert("Message sent!");
+        await sendPromise;
+
+        // Auto-reply right after main succeeds
+        await emailjs.sendForm(serviceID, templateID_Reply, contactForm);
+
+        if (statusEl) statusEl.textContent = "Message Sent Successfully!";
+        contactForm.reset();
       } catch (err) {
-        console.error("FormSubmit error:", err);
-        if (statusEl) statusEl.textContent = "Sorry, sending failed. Please try again.";
+        // Improve error logging to surface EmailJS details
+        console.error("EmailJS error:", err);
+        if (err && typeof err === "object") {
+          try {
+            const msg = err.text || err.message || JSON.stringify(err);
+            console.error("EmailJS details:", msg);
+          } catch {}
+        }
+        if (statusEl)
+          statusEl.textContent = "Sorry, sending failed. Please try again.";
       } finally {
+        // Clean up any alias hidden inputs
+        // Prevent accumulating hidden fields over repeated submissions
+        const aliasNames = [
+          "from_name",
+          "from_email",
+          "message",
+          "subject",
+          "phone",
+          "to_email",
+          "to_name",
+          "original_subject",
+        ];
+        aliasNames.forEach((n) => {
+          const el = contactForm.querySelector(`[name="${n}"]`);
+          if (el && el.type === "hidden") el.remove();
+        });
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = originalText || "Send Message";
@@ -414,7 +496,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Animate modern skills progress bars
   const skillSection = document.getElementById("skills");
-  const progressBars = skillSection?.querySelectorAll(".skills-modern-progress") || [];
+  const progressBars =
+    skillSection?.querySelectorAll(".skills-modern-progress") || [];
 
   // Helper to fill bars safely
   const fillBars = () => {
@@ -429,12 +512,15 @@ document.addEventListener("DOMContentLoaded", () => {
   if (skillSection && progressBars.length) {
     // Prefer animating when section enters viewport, but be permissive
     if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver((entries, obs) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          fillBars();
-          obs.disconnect();
-        }
-      }, { threshold: 0.1, rootMargin: "0px 0px -10% 0px" });
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            fillBars();
+            obs.disconnect();
+          }
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+      );
       observer.observe(skillSection);
 
       // Fallback: if already in view or observer doesn't fire quickly, fill after short delay
@@ -448,16 +534,18 @@ document.addEventListener("DOMContentLoaded", () => {
       fillBars();
     }
   }
-  
+
   // Skills floating cards: subtle parallax using CSS variables
-  const skillsCardsRoot = document.querySelector('#skills .tech-stack-3d-cards');
+  const skillsCardsRoot = document.querySelector(
+    "#skills .tech-stack-3d-cards"
+  );
   if (skillsCardsRoot) {
-    const cards = skillsCardsRoot.querySelectorAll('.tech-card');
+    const cards = skillsCardsRoot.querySelectorAll(".tech-card");
 
     // Tooltip element that follows cursor
-    const isTouch = window.matchMedia('(pointer: coarse)').matches;
-    const tooltip = document.createElement('div');
-    tooltip.className = 'tech-tooltip';
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    const tooltip = document.createElement("div");
+    tooltip.className = "tech-tooltip";
     tooltip.hidden = true;
     if (!isTouch) document.body.appendChild(tooltip);
 
@@ -469,16 +557,24 @@ document.addEventListener("DOMContentLoaded", () => {
         const speed = (i + 1) * 0.01; // staggered parallax
         const x = (window.innerWidth - mouseX * speed) / 50;
         const y = (window.innerHeight - mouseY * speed) / 50;
-        card.style.setProperty('--tx', `${x}px`);
-        card.style.setProperty('--ty', `${y}px`);
+        card.style.setProperty("--tx", `${x}px`);
+        card.style.setProperty("--ty", `${y}px`);
       });
 
       // Detect hovered card via bounding box and show its name
-      let hoveredName = '';
+      let hoveredName = "";
       for (const card of cards) {
         const r = card.getBoundingClientRect();
-        if (mouseX >= r.left && mouseX <= r.right && mouseY >= r.top && mouseY <= r.bottom) {
-          hoveredName = card.querySelector('img')?.alt || card.getAttribute('data-logo') || '';
+        if (
+          mouseX >= r.left &&
+          mouseX <= r.right &&
+          mouseY >= r.top &&
+          mouseY <= r.bottom
+        ) {
+          hoveredName =
+            card.querySelector("img")?.alt ||
+            card.getAttribute("data-logo") ||
+            "";
           break;
         }
       }
@@ -492,158 +588,170 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
     if (!isTouch) {
-      window.addEventListener('mousemove', handleMouse, { passive: true });
-      window.addEventListener('mouseleave', () => { tooltip.hidden = true; }, { passive: true });
-      window.addEventListener('scroll', () => { tooltip.hidden = true; }, { passive: true });
+      window.addEventListener("mousemove", handleMouse, { passive: true });
+      window.addEventListener(
+        "mouseleave",
+        () => {
+          tooltip.hidden = true;
+        },
+        { passive: true }
+      );
+      window.addEventListener(
+        "scroll",
+        () => {
+          tooltip.hidden = true;
+        },
+        { passive: true }
+      );
     }
   }
 });
 
-// animated background 
-const canvas = document.getElementById('canvas-bg');
-const ctx = canvas.getContext('2d');
+// animated background
+const canvas = document.getElementById("canvas-bg");
+const ctx = canvas.getContext("2d");
 
 let particlesArray;
 let w, h;
 
 // Mouse settings
 const mouse = {
-    x: null,
-    y: null,
-    radius: 120 // How close the mouse needs to be to push particles
+  x: null,
+  y: null,
+  radius: 120, // How close the mouse needs to be to push particles
 };
 
-window.addEventListener('mousemove', (event) => {
-    mouse.x = event.x;
-    mouse.y = event.y;
+window.addEventListener("mousemove", (event) => {
+  mouse.x = event.x;
+  mouse.y = event.y;
 });
 
 function setCanvasSize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
 }
 
 class Particle {
-    constructor() {
-        this.x = Math.random() * w;
-        this.y = Math.random() * h;
-        this.size = Math.random() * + 3;
-        
-        // Base movement speed
-        this.speedX = (Math.random() * 1) - 0.75;
-        this.speedY = (Math.random() * 1.) - 0.75;
-        
-        // Resistance/Density (makes particles react differently)
-        this.density = (Math.random() * 20) + 1;
+  constructor() {
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.size = Math.random() * +3;
+
+    // Base movement speed
+    this.speedX = Math.random() * 1 - 0.75;
+    this.speedY = Math.random() * 1 - 0.75;
+
+    // Resistance/Density (makes particles react differently)
+    this.density = Math.random() * 20 + 1;
+  }
+
+  update() {
+    // --- MOUSE REPEL LOGIC ---
+    let dx = mouse.x - this.x;
+    let dy = mouse.y - this.y;
+    let distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < mouse.radius) {
+      // Calculate force and direction
+      let forceDirectionX = dx / distance;
+      let forceDirectionY = dy / distance;
+      let force = (mouse.radius - distance) / mouse.radius;
+      let directionX = forceDirectionX * force * this.density;
+      let directionY = forceDirectionY * force * this.density;
+
+      // Push particle away
+      this.x -= directionX;
+      this.y -= directionY;
     }
 
-    update() {
-        // --- MOUSE REPEL LOGIC ---
-        let dx = mouse.x - this.x;
-        let dy = mouse.y - this.y;
-        let distance = Math.sqrt(dx * dx + dy * dy);
-        
-        if (distance < mouse.radius) {
-            // Calculate force and direction
-            let forceDirectionX = dx / distance;
-            let forceDirectionY = dy / distance;
-            let force = (mouse.radius - distance) / mouse.radius;
-            let directionX = forceDirectionX * force * this.density;
-            let directionY = forceDirectionY * force * this.density;
+    // Apply constant floating movement
+    this.x += this.speedX;
+    this.y += this.speedY;
 
-            // Push particle away
-            this.x -= directionX;
-            this.y -= directionY;
-        }
+    // Bounce off screen edges
+    if (this.x > w || this.x < 0) this.speedX *= -1;
+    if (this.y > h || this.y < 0) this.speedY *= -1;
+  }
 
-        // Apply constant floating movement
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        // Bounce off screen edges
-        if (this.x > w || this.x < 0) this.speedX *= -1;
-        if (this.y > h || this.y < 0) this.speedY *= -1;
-    }
-
-    draw() {
-        ctx.fillStyle = '#ff6b00';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 1);
-        ctx.fill();
-    }
+  draw() {
+    ctx.fillStyle = "#ff6b00";
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 1);
+    ctx.fill();
+  }
 }
 
 function init() {
-    setCanvasSize();
-    particlesArray = [];
-    let particleCount = Math.floor((w * h) / 15000); 
-    for (let i = 0; i < particleCount; i++) {
-        particlesArray.push(new Particle());
-    }
+  setCanvasSize();
+  particlesArray = [];
+  let particleCount = Math.floor((w * h) / 15000);
+  for (let i = 0; i < particleCount; i++) {
+    particlesArray.push(new Particle());
+  }
 }
 
 function connect() {
-    for (let i = 0; i < particlesArray.length; i++) {
-        for (let j = i; j < particlesArray.length; j++) {
-            const dx = particlesArray[i].x - particlesArray[j].x;
-            const dy = particlesArray[i].y - particlesArray[j].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
+  for (let i = 0; i < particlesArray.length; i++) {
+    for (let j = i; j < particlesArray.length; j++) {
+      const dx = particlesArray[i].x - particlesArray[j].x;
+      const dy = particlesArray[i].y - particlesArray[j].y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance < 150) {
-                ctx.strokeStyle = `rgba(255, 107, 0, ${1 - distance/150})`;
-                ctx.lineWidth = 0.6;
-                ctx.beginPath();
-                ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
-                ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
-                ctx.stroke();
-            }
-        }
+      if (distance < 150) {
+        ctx.strokeStyle = `rgba(255, 107, 0, ${1 - distance / 150})`;
+        ctx.lineWidth = 0.6;
+        ctx.beginPath();
+        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+        ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+        ctx.stroke();
+      }
     }
+  }
 }
 
 function animate() {
   // Fully clear frame to keep site background visible
   ctx.clearRect(0, 0, w, h);
 
-    for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
-        particlesArray[i].draw();
-    }
-    connect();
-    requestAnimationFrame(animate);
+  for (let i = 0; i < particlesArray.length; i++) {
+    particlesArray[i].update();
+    particlesArray[i].draw();
+  }
+  connect();
+  requestAnimationFrame(animate);
 }
 
 // Reset mouse coordinates when mouse leaves window
-window.addEventListener('mouseout', () => {
-    mouse.x = undefined;
-    mouse.y = undefined;
+window.addEventListener("mouseout", () => {
+  mouse.x = undefined;
+  mouse.y = undefined;
 });
 
-window.addEventListener('resize', () => {
-    init();
+window.addEventListener("resize", () => {
+  init();
 });
 
 init();
 animate();
 
 // About Read More toggle
-document.addEventListener('DOMContentLoaded', () => {
-  const desc = document.getElementById('about-desc');
-  const btn = document.querySelector('.read-more-toggle');
+document.addEventListener("DOMContentLoaded", () => {
+  const desc = document.getElementById("about-desc");
+  const btn = document.querySelector(".read-more-toggle");
   if (!desc || !btn) return;
 
   const update = () => {
-    const isCollapsed = desc.classList.contains('collapsed');
-    btn.textContent = isCollapsed ? 'Read more' : 'Show less';
-    btn.setAttribute('aria-expanded', String(!isCollapsed));
+    const isCollapsed = desc.classList.contains("collapsed");
+    btn.textContent = isCollapsed ? "Read more" : "Show less";
+    btn.setAttribute("aria-expanded", String(!isCollapsed));
   };
 
   // Initialize state
-  desc.classList.add('collapsed');
+  desc.classList.add("collapsed");
   update();
 
-  btn.addEventListener('click', () => {
-    desc.classList.toggle('collapsed');
+  btn.addEventListener("click", () => {
+    desc.classList.toggle("collapsed");
     update();
   });
 });
