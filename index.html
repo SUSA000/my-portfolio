@@ -299,238 +299,142 @@
             continuous learning and hands-on projects over 2 years of dedicated
             learning and 6 months of practical experience.
           </p>
+          <!-- Skills Category Filters -->
+          <div class="filter-buttons" role="toolbar" aria-label="Skill filters">
+            <button class="btn active" onclick="filterSkills('all')" data-filter="all">All</button>
+            <button class="btn" onclick="filterSkills('frontend')" data-filter="frontend">Frontend</button>
+            <button class="btn" onclick="filterSkills('backend')" data-filter="backend">Backend</button>
+            <button class="btn" onclick="filterSkills('mobile')" data-filter="mobile">Mobile</button>
+            <button class="btn" onclick="filterSkills('database')" data-filter="database">Database</button>
+            <button class="btn" onclick="filterSkills('tools')" data-filter="tools">Tools</button>
+          </div>
           <div class="skills-two-col">
             <div class="skills-left">
-              <div class="tech-stack-3d-bg">
-                <div class="tech-stack-3d-cards">
-                  <div class="tech-card" data-logo="next">
-                    <img src="assets/img/php01-svgrepo-com.svg" alt="php.js" />
+              <div class="skills-logo-grid" aria-label="Technology logos">
+                <!-- Frontend row: align to right-side skills order -->
+                <div class="logo-card" data-category="frontend">
+                  <div class="logo-panel"><img src="assets/img/javascript-155-svgrepo-com.svg" alt="JavaScript" /></div>
+                  <span>JavaScript</span>
+                </div>
+                <div class="logo-card" data-category="frontend">
+                  <div class="logo-panel"><img src="assets/img/react-svgrepo-com.svg" alt="React" /></div>
+                  <span>React</span>
+                </div>
+                <div class="logo-card" data-category="frontend">
+                  <div class="logo-panel"><img src="assets/img/tailwind-css-svgrepo-com%20(1).svg" alt="Tailwind CSS" /></div>
+                  <span>Tailwind</span>
+                </div>
+                <!-- Backend / Database row -->
+                <div class="logo-card" data-category="backend">
+                  <div class="logo-panel"><img src="assets/img/php01-svgrepo-com.svg" alt="PHP" /></div>
+                  <span>PHP</span>
+                </div>
+                <div class="logo-card" data-category="database">
+                  <div class="logo-panel"><img src="assets/img/mysql-logo-svgrepo-com.svg" alt="MySQL" /></div>
+                  <span>MySQL</span>
+                </div>
+                <div class="logo-card" data-category="database">
+                  <div class="logo-panel"><img src="assets/img/firebase-svgrepo-com.svg" alt="Firebase" /></div>
+                  <span>Firebase</span>
+                </div>
+                <!-- Additional frontend + tools row -->
+                <div class="logo-card" data-category="frontend">
+                  <div class="logo-panel ts-card">
+                    <div class="ts-square"><span>TS</span></div>
                   </div>
-                  <div class="tech-card" data-logo="react">
-                    <img src="assets/img/react-svgrepo-com.svg" alt="React" />
-                  </div>
-                  <div class="tech-card" data-logo="ts">
-                    <img
-                      src="assets/img/typescript-official-svgrepo-com.svg"
-                      alt="TypeScript"
-                    />
-                  </div>
-                  <div class="tech-card" data-logo="tailwind">
-                    <img
-                      src="assets/img/tailwind-css-svgrepo-com%20(1).svg"
-                      alt="Tailwind CSS"
-                    />
-                  </div>
-                  <div class="tech-card" data-logo="js">
-                    <img
-                      src="assets/img/javascript-155-svgrepo-com.svg"
-                      alt="JavaScript"
-                    />
-                  </div>
-                  <div class="tech-card" data-logo="php">
-                    <img
-                      src="assets/img/nextjs-icon-svgrepo-com.svg"
-                      alt="Next.js"
-                    />
-                  </div>
-                  <div class="tech-card" data-logo="mysql">
-                    <img
-                      src="assets/img/mysql-logo-svgrepo-com.svg"
-                      alt="MySQL"
-                    />
-                  </div>
-                  <div class="tech-card" data-logo="firebase">
-                    <img
-                      src="assets/img/firebase-svgrepo-com.svg"
-                      alt="Firebase"
-                    />
-                  </div>
-                  <div class="tech-card" data-logo="lightning">
-                    <img
-                      src="assets/img/lightning-svgrepo-com.svg"
-                      alt="Lightning"
-                    />
-                  </div>
+                  <span>TypeScript</span>
+                </div>
+                <div class="logo-card" data-category="frontend">
+                  <div class="logo-panel"><img src="assets/img/nextjs-icon-svgrepo-com.svg" alt="Next.js" /></div>
+                  <span>Next.js</span>
+                </div>
+                <div class="logo-card" data-category="tools">
+                  <div class="logo-panel"><img src="assets/img/lightning-svgrepo-com.svg" alt="Lightning" /></div>
+                  <span>Lightning</span>
                 </div>
               </div>
             </div>
             <div class="skills-right">
-              <div class="skills-modern-flex">
-                <div class="skills-modern-card">
-                  <h3 class="skills-modern-title">Frontend</h3>
-                  <div class="skills-modern-list">
-                    <div class="skills-modern-item">
-                      <span class="skills-modern-name">Next.js</span>
-                      <div class="skills-modern-bar">
-                        <div
-                          class="skills-modern-progress"
-                          data-width="80%"
-                        ></div>
-                      </div>
-                      <span class="skills-modern-percent">80%</span>
-                    </div>
-                    <div class="skills-modern-item">
-                      <span class="skills-modern-name">React</span>
-                      <div class="skills-modern-bar">
-                        <div
-                          class="skills-modern-progress"
-                          data-width="85%"
-                        ></div>
-                      </div>
-                      <span class="skills-modern-percent">85%</span>
-                    </div>
-                    <div class="skills-modern-item">
-                      <span class="skills-modern-name">TypeScript</span>
-                      <div class="skills-modern-bar">
-                        <div
-                          class="skills-modern-progress"
-                          data-width="75%"
-                        ></div>
-                      </div>
-                      <span class="skills-modern-percent">75%</span>
-                    </div>
-                    <div class="skills-modern-item">
-                      <span class="skills-modern-name">Tailwind CSS</span>
-                      <div class="skills-modern-bar">
-                        <div
-                          class="skills-modern-progress"
-                          data-width="90%"
-                        ></div>
-                      </div>
-                      <span class="skills-modern-percent">90%</span>
-                    </div>
-                    <div class="skills-modern-item">
-                      <span class="skills-modern-name">JavaScript</span>
-                      <div class="skills-modern-bar">
-                        <div
-                          class="skills-modern-progress"
-                          data-width="83%"
-                        ></div>
-                      </div>
-                      <span class="skills-modern-percent">83%</span>
-                    </div>
-                  </div>
+              <div id="skills-grid" class="skills-grid" aria-live="polite">
+                <!-- Frontend -->
+                <div class="skill-card" data-category="frontend" style="--p:85; --c: var(--primary-orange)">
+                  <div class="circle"><div class="inner-circle"><span class="skill-icon">HTML</span></div></div>
+                  <p class="skill-percent">85%</p>
+                  <h3>HTML</h3>
                 </div>
-                <div class="skills-modern-card">
-                  <h3 class="skills-modern-title">Tools &amp; Others</h3>
-                  <div class="skills-modern-list">
-                    <div class="skills-modern-item">
-                      <span class="skills-modern-name">Git</span>
-                      <div class="skills-modern-bar">
-                        <div
-                          class="skills-modern-progress"
-                          data-width="80%"
-                        ></div>
-                      </div>
-                      <span class="skills-modern-percent">80%</span>
-                    </div>
-                    <div class="skills-modern-item">
-                      <span class="skills-modern-name">VS Code</span>
-                      <div class="skills-modern-bar">
-                        <div
-                          class="skills-modern-progress"
-                          data-width="90%"
-                        ></div>
-                      </div>
-                      <span class="skills-modern-percent">90%</span>
-                    </div>
-                    <div class="skills-modern-item">
-                      <span class="skills-modern-name">Figma</span>
-                      <div class="skills-modern-bar">
-                        <div
-                          class="skills-modern-progress"
-                          data-width="60%"
-                        ></div>
-                      </div>
-                      <span class="skills-modern-percent">60%</span>
-                    </div>
-                  </div>
+                <div class="skill-card" data-category="frontend" style="--p:80; --c: var(--primary-orange)">
+                  <div class="circle"><div class="inner-circle"><span class="skill-icon">CSS</span></div></div>
+                  <p class="skill-percent">80%</p>
+                  <h3>CSS</h3>
                 </div>
-                <div class="skills-modern-card">
-                  <h3 class="skills-modern-title">Backend</h3>
-                  <div class="skills-modern-list">
-                    <div class="skills-modern-item">
-                      <span class="skills-modern-name">PHP</span>
-                      <div class="skills-modern-bar">
-                        <div
-                          class="skills-modern-progress"
-                          data-width="70%"
-                        ></div>
-                      </div>
-                      <span class="skills-modern-percent">70%</span>
-                    </div>
-                    <div class="skills-modern-item">
-                      <span class="skills-modern-name">MySQL</span>
-                      <div class="skills-modern-bar">
-                        <div
-                          class="skills-modern-progress"
-                          data-width="75%"
-                        ></div>
-                      </div>
-                      <span class="skills-modern-percent">75%</span>
-                    </div>
-                    <div class="skills-modern-item">
-                      <span class="skills-modern-name">Firebase</span>
-                      <div class="skills-modern-bar">
-                        <div
-                          class="skills-modern-progress"
-                          data-width="65%"
-                        ></div>
-                      </div>
-                      <span class="skills-modern-percent">65%</span>
-                    </div>
-                    <div class="skills-modern-item">
-                      <span class="skills-modern-name">Supabase</span>
-                      <div class="skills-modern-bar">
-                        <div
-                          class="skills-modern-progress"
-                          data-width="60%"
-                        ></div>
-                      </div>
-                      <span class="skills-modern-percent">60%</span>
-                    </div>
-                  </div>
+                <div class="skill-card" data-category="frontend" style="--p:60; --c: var(--primary-orange)">
+                  <div class="circle"><div class="inner-circle"><span class="skill-icon">JS</span></div></div>
+                  <p class="skill-percent">60%</p>
+                  <h3>JavaScript</h3>
+                </div>
+                <div class="skill-card" data-category="frontend" style="--p:70; --c: var(--primary-orange)">
+                  <div class="circle"><div class="inner-circle"><span class="skill-icon">React</span></div></div>
+                  <p class="skill-percent">70%</p>
+                  <h3>React</h3>
+                </div>
+                <div class="skill-card" data-category="frontend" style="--p:90; --c: var(--primary-orange)">
+                  <div class="circle"><div class="inner-circle"><span class="skill-icon">TW</span></div></div>
+                  <p class="skill-percent">90%</p>
+                  <h3>Tailwind CSS</h3>
+                </div>
+
+                <!-- Backend -->
+                <div class="skill-card" data-category="backend" style="--p:65; --c: var(--primary-orange)">
+                  <div class="circle"><div class="inner-circle"><span class="skill-icon">PHP</span></div></div>
+                  <p class="skill-percent">65%</p>
+                  <h3>PHP</h3>
+                </div>
+                <div class="skill-card" data-category="backend" style="--p:55; --c: var(--primary-orange)">
+                  <div class="circle"><div class="inner-circle"><span class="skill-icon">Node</span></div></div>
+                  <p class="skill-percent">55%</p>
+                  <h3>Node.js</h3>
+                </div>
+
+                <!-- Database -->
+                <div class="skill-card" data-category="database" style="--p:70; --c: var(--primary-orange)">
+                  <div class="circle"><div class="inner-circle"><span class="skill-icon">MySQL</span></div></div>
+                  <p class="skill-percent">70%</p>
+                  <h3>MySQL</h3>
+                </div>
+                <div class="skill-card" data-category="database" style="--p:60; --c: var(--primary-orange)">
+                  <div class="circle"><div class="inner-circle"><span class="skill-icon">Mongo</span></div></div>
+                  <p class="skill-percent">60%</p>
+                  <h3>MongoDB</h3>
+                </div>
+
+                <!-- Mobile -->
+                <div class="skill-card" data-category="mobile" style="--p:75; --c: var(--primary-orange)">
+                  <div class="circle"><div class="inner-circle"><span class="skill-icon">Android</span></div></div>
+                  <p class="skill-percent">75%</p>
+                  <h3>Kotlin</h3>
+                </div>
+
+                <!-- Tools -->
+                <div class="skill-card" data-category="tools" style="--p:80; --c: var(--primary-orange)">
+                  <div class="circle"><div class="inner-circle"><span class="skill-icon">Git</span></div></div>
+                  <p class="skill-percent">80%</p>
+                  <h3>Git</h3>
+                </div>
+                <div class="skill-card" data-category="tools" style="--p:80; --c: var(--primary-orange)">
+                  <div class="circle"><div class="inner-circle"><span class="skill-icon">VS</span></div></div>
+                  <p class="skill-percent">80%</p>
+                  <h3>VS Code</h3>
+                </div>
+                <div class="skill-card" data-category="tools" style="--p:85; --c: var(--primary-orange)">
+                  <div class="circle"><div class="inner-circle"><span class="skill-icon">Fg</span></div></div>
+                  <p class="skill-percent">85%</p>
+                  <h3>Figma</h3>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- Technologies Tag Cloud (inlined into Skills) -->
-        <div class="tech-cloud-section">
-          <h2 class="tech-cloud-title">Technologies I Work With</h2>
-          <ul class="tech-cloud-list" role="list">
-            <li>HTML5</li>
-            <li>CSS3</li>
-            <li>SASS</li>
-            <li>Bootstrap</li>
-            <li>Tailwind CSS</li>
-            <li>JavaScript</li>
-            <li>TypeScript</li>
-            <li>React</li>
-            <li>Next.js</li>
-            <li>Node.js</li>
-            <li>PHP</li>
-            <li>MySQL</li>
-            <li>REST APIs</li>
-            <li>JSON</li>
-            <li>Git</li>
-            <li>GitHub</li>
-            <li>VS Code</li>
-            <li>Figma</li>
-            <li>AWS</li>
-            <li>Firebase</li>
-            <li>Supabase</li>
-            <li>Vercel</li>
-            <li>Resend</li>
-            <li>Bun</li>
-            <li>NPM</li>
-            <li>Yarn</li>
-            <li>ESLint</li>
-            <li>Prettier</li>
-            <li>Responsive Design</li>
-            <li>SEO</li>
-          </ul>
-        </div>
+        <!-- Technologies Tag Cloud removed as requested -->
       </section>
 
       <!-- Projects Section -->

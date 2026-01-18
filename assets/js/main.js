@@ -755,3 +755,37 @@ document.addEventListener("DOMContentLoaded", () => {
     update();
   });
 });
+
+// Global skills filtering for category buttons
+function filterSkills(category) {
+  try {
+    const grid = document.getElementById("skills-grid");
+    const cards = grid ? grid.querySelectorAll(".skill-card") : document.querySelectorAll(".skill-card");
+    cards.forEach((card) => {
+      const cat = card.getAttribute("data-category");
+      const hide = category !== "all" && cat !== category;
+      card.classList.toggle("hidden", hide);
+    });
+
+    // Also filter left-side logo grid
+    const logoGrid = document.querySelector(".skills-logo-grid");
+    if (logoGrid) {
+      logoGrid.querySelectorAll(".logo-card").forEach((logo) => {
+        const cat = logo.getAttribute("data-category");
+        const hide = category !== "all" && cat !== category;
+        logo.classList.toggle("hidden", hide);
+      });
+    }
+
+    // Update active state on filter buttons
+    const container = document.querySelector(".filter-buttons");
+    if (container) {
+      container.querySelectorAll(".btn").forEach((btn) => {
+        const val = btn.getAttribute("data-filter") || (btn.getAttribute("onclick") || "").match(/'(.*?)'/)?.[1] || "";
+        btn.classList.toggle("active", val === category);
+      });
+    }
+  } catch (e) {
+    console.warn("filterSkills error", e);
+  }
+}

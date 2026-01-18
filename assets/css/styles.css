@@ -7,9 +7,8 @@
 }
 .skills-left {
   min-height: 300px;
-  display: flex; /* center content vertically within left column */
-  align-items: center;
-  justify-content: flex-start; /* keep it on the left side */
+  display: block;
+  position: relative;
 }
 .skills-right {
   display: flex;
@@ -94,129 +93,78 @@
   box-shadow: 0 0 14px rgba(145, 94, 255, 0.35);
   transform: rotateX(0) rotateY(0) scale(1.1)
     translate3d(var(--tx, 0px), var(--ty, 0px), 0);
-  z-index: 10;
+}
+
+/* Skills logo grid + wireframes (foreground over decorative outlines) */
+.skills-orbit-section {
+  position: relative;
+  overflow: hidden;
+}
+/* wireframe decoration removed per request */
+
+.skills-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, 1fr));
+  gap: 1.25rem;
+  align-items: center;
+  position: relative;
+  z-index: 10; /* above wireframes */
+}
+.logo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.logo-panel {
+  width: 120px;
+  height: 120px;
+  border-radius: 26px; /* squircle feel */
+  background: #0f172a; /* very dark slate-blue charcoal */
+  border: 1px solid #1e293b; /* subtle lighter border */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35); /* soft depth */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+.logo-panel img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.15));
+}
+.logo-panel:hover {
+  transform: translateY(-6px);
+  background-color: #121a26;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+.logo-card span {
+  font-weight: 700;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+.ts-card .ts-square {
+  width: 48px;
+  height: 48px;
+  background: #007acc; /* vivid blue */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ts-card .ts-square span {
+  color: #ffffff;
+  font-weight: 800;
+  font-family: var(--font-sans);
 }
 @media (max-width: 900px) {
-  /* Match desktop layout proportions on mobile */
-  .tech-stack-3d-cards {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-  }
-  /* Keep card size consistent to desktop for visual parity */
-  .tech-card {
-    width: 68px;
-    height: 88px;
-  }
-  .tech-card img {
-    max-width: 36px;
-    max-height: 36px;
-  }
+  .skills-logo-grid { grid-template-columns: repeat(2, minmax(140px, 1fr)); }
 }
-
-/* Cursor-following tooltip for tech cards */
-.tech-tooltip {
-  position: fixed;
-  left: 0;
-  top: 0;
-  padding: 6px 10px;
-  border-radius: 10px;
-  background: var(--color-accent);
-  color: #081b29;
-  font-weight: 700;
-  font-size: 0.85rem;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25), 0 0 18px rgba(255, 138, 61, 0.25);
-  pointer-events: none;
-  z-index: 100;
+@media (max-width: 600px) {
+  .skills-logo-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
 }
-
-/* Floating animation and positioned layout for each card */
-@keyframes floatTechCard {
-  0%,
-  100% {
-    transform: rotateX(15deg) rotateY(-15deg)
-      translate3d(var(--tx, 0px), var(--ty, 0px), 0);
-  }
-  50% {
-    transform: rotateX(10deg) rotateY(-10deg)
-      translate3d(calc(var(--tx, 0px)), calc(var(--ty, 0px) - 20px), 0);
-  }
-}
-
-.tech-card:nth-child(1) {
-  top: 20%;
-  left: 30%;
-  animation-delay: 0s;
-}
-.tech-card:nth-child(2) {
-  top: 15%;
-  left: 60%;
-  animation-delay: 0.8s;
-}
-.tech-card:nth-child(3) {
-  top: 40%;
-  left: 80%;
-  animation-delay: 1.6s;
-}
-.tech-card:nth-child(4) {
-  top: 70%;
-  left: 20%;
-  animation-delay: 0.4s;
-}
-.tech-card:nth-child(5) {
-  top: 80%;
-  left: 50%;
-  animation-delay: 1.2s;
-}
-.tech-card:nth-child(6) {
-  top: 50%;
-  left: 45%;
-  animation-delay: 2s;
-}
-.tech-card:nth-child(7) {
-  top: 340px;
-  left: 110px;
-  animation-delay: 0.6s;
-}
-.tech-card:nth-child(8) {
-  top: 400px;
-  left: 260px;
-  animation-delay: 1.4s;
-}
-.tech-card:nth-child(9) {
-  top: 300px;
-  left: 20px;
-  animation-delay: 2.2s;
-}
-/* Technologies Tag Cloud */
-.tech-cloud-section {
-  margin-top: 2.5rem;
-  padding-bottom: 2.5rem;
-}
-.tech-cloud-title {
-  text-align: center;
-  font-size: 2.4rem;
-  font-weight: 300;
-  margin-bottom: 2.2rem;
-  letter-spacing: -1px;
-}
-.tech-cloud-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.1rem 1.3rem;
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 1100px;
-}
-.tech-cloud-list li {
-  background: #ffffff; /* white button-style chip */
-  color: #0f172a;
-  font-weight: 600;
-  font-size: 1.05rem;
   border-radius: 999px;
   padding: 0.55rem 1.35rem;
   box-shadow: 0 6px 24px rgba(15, 23, 42, 0.08);
@@ -2220,4 +2168,92 @@ select {
   );
   box-shadow: 0 0 12px rgba(255, 138, 61, 0.5);
   z-index: 1000;
+}
+
+/* =============================
+   Skills Filters + Circular Grid
+============================= */
+.filter-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto 2rem;
+}
+.filter-buttons .btn {
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+.filter-buttons .btn.active {
+  background: var(--color-accent);
+  color: #081b29;
+  box-shadow: 0 4px 16px rgba(255, 138, 61, 0.35);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(190px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.skill-card {
+  text-align: center;
+  background: transparent; /* remove card surface */
+  border: none; /* no border */
+  border-radius: 0; /* no card corners */
+  padding: 0.25rem 0 0.6rem; /* minimal spacing */
+  box-shadow: none; /* no shadow */
+}
+.skill-card:hover { /* no hover decoration on transparent card */ }
+
+/* The Circular Progress Bar (The Magic Part) */
+.circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 15px auto;
+  position: relative;
+  /* Conic Gradient creates the progress pie chart */
+  /* We use CSS variables (--p) set in HTML to determine the percentage */
+  /* Show only the progress arc; remove background fill for a cleaner look */
+  background: conic-gradient(var(--c, var(--primary-orange)) calc(var(--p, 0) * 1%), transparent 0deg);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Adds the "Glow" behind the circle */
+  box-shadow: 0 0 12px rgba(0,0,0,0.35);
+}
+
+/* The inner hole to make it a ring/doughnut */
+.inner-circle {
+  width: 100px;
+  height: 100px;
+  background-color: #151515; /* Match background slightly lighter */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem; /* Icon size */
+  color: #666; /* Icon color */
+  /* Refined inset shadow for modern, clear depth */
+  box-shadow: inset 0 8px 16px rgba(0,0,0,0.6), inset 0 -6px 12px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,0,0,0.35);
+}
+.skill-icon { font-weight: 800; letter-spacing: 0.02em; color: #3b3f46; opacity: 0.85; }
+.skill-card h3 {
+  margin: 5px 0;
+  color: var(--color-accent);
+}
+.skill-card p {
+  margin: 0;
+  font-weight: bold;
+  color: #ffffff; /* percent in white */
+}
+@media (max-width: 700px) {
+  .skills-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .circle { width: 100px; height: 100px; }
+  .inner-circle { width: 84px; height: 84px; font-size: 1.6rem; }
 }
