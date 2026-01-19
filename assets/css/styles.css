@@ -142,9 +142,21 @@
   border-color: rgba(56, 189, 248, 0.3);
 }
 .logo-card span {
+  display: none; /* hide fixed names; show via tooltip instead */
+}
+.logo-tooltip {
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: var(--color-accent);
+  color: #081b29;
   font-weight: 700;
-  color: var(--color-text-light);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25), 0 0 18px rgba(255, 138, 61, 0.25);
+  pointer-events: none;
+  z-index: 100;
 }
 .ts-card .ts-square {
   width: 48px;

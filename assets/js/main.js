@@ -536,50 +536,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Skills floating cards: subtle parallax using CSS variables
-  const skillsCardsRoot = document.querySelector(
-    "#skills .tech-stack-3d-cards"
-  );
-  if (skillsCardsRoot) {
-    const cards = skillsCardsRoot.querySelectorAll(".tech-card");
-
-    // Tooltip element that follows cursor
+  // Logo grid hover tooltip: show name near cursor, hide fixed labels
+  const logoGrid = document.querySelector("#skills .skills-logo-grid");
+  if (logoGrid) {
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
     const tooltip = document.createElement("div");
-    tooltip.className = "tech-tooltip";
+    tooltip.className = "logo-tooltip";
     tooltip.hidden = true;
     if (!isTouch) document.body.appendChild(tooltip);
 
     const handleMouse = (e) => {
-      const mouseX = e.clientX;
-      const mouseY = e.clientY;
-      // Parallax drift
-      cards.forEach((card, i) => {
-        const speed = (i + 1) * 0.01; // staggered parallax
-        const x = (window.innerWidth - mouseX * speed) / 50;
-        const y = (window.innerHeight - mouseY * speed) / 50;
-        card.style.setProperty("--tx", `${x}px`);
-        card.style.setProperty("--ty", `${y}px`);
-      });
-
-      // Detect hovered card via bounding box and show its name
-      let hoveredName = "";
-      for (const card of cards) {
-        const r = card.getBoundingClientRect();
-        if (
-          mouseX >= r.left &&
-          mouseX <= r.right &&
-          mouseY >= r.top &&
-          mouseY <= r.bottom
-        ) {
-          hoveredName =
-            card.querySelector("img")?.alt ||
-            card.getAttribute("data-logo") ||
-            "";
-          break;
-        }
+      const target = e.target.closest(".logo-panel, .logo-card");
+      let name = "";
+      if (target) {
+        const img = target.querySelector("img");
+        name = img?.alt || target.closest(".logo-card")?.getAttribute("data-name") || "";
       }
-      if (hoveredName) {
-        tooltip.textContent = hoveredName;
+      if (name) {
+        tooltip.textContent = name;
         tooltip.style.left = `${e.clientX + 12}px`;
         tooltip.style.top = `${e.clientY + 12}px`;
         tooltip.hidden = false;
@@ -587,22 +561,11 @@ document.addEventListener("DOMContentLoaded", () => {
         tooltip.hidden = true;
       }
     };
+
     if (!isTouch) {
-      window.addEventListener("mousemove", handleMouse, { passive: true });
-      window.addEventListener(
-        "mouseleave",
-        () => {
-          tooltip.hidden = true;
-        },
-        { passive: true }
-      );
-      window.addEventListener(
-        "scroll",
-        () => {
-          tooltip.hidden = true;
-        },
-        { passive: true }
-      );
+      logoGrid.addEventListener("mousemove", handleMouse, { passive: true });
+      logoGrid.addEventListener("mouseleave", () => (tooltip.hidden = true), { passive: true });
+      window.addEventListener("scroll", () => (tooltip.hidden = true), { passive: true });
     }
   }
 });
