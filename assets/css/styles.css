@@ -16,6 +16,20 @@
   box-shadow: none;
 }
 
+/* Mobile: stack circles above logos */
+@media (max-width: 780px) {
+  .skills-two-col {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  /* Reorder: circles first, logos second */
+  .skills-right { grid-row: 1; }
+  .skills-left { grid-row: 2; }
+  /* Tighter spacing when stacked */
+  .skills-grid { margin-top: 0.5rem; }
+  .skills-logo-grid { margin-top: 1.2rem; }
+}
+
 /* Hex profile - sample-based */
 .profile-wrapper {
   position: relative;
@@ -89,6 +103,21 @@
     right: 40px;
     transform: rotate(30deg);
   }
+
+/* Mobile responsiveness and performance tweaks for hero profile */
+@media (max-width: 860px) {
+  .hero-right { flex: 1 1 auto; max-width: 520px; }
+  .profile-wrapper { width: min(80vw, 340px); height: auto; aspect-ratio: 1 / 1; }
+  .profile-image { width: 70%; height: 72%; }
+  .hex-border-main { width: 78%; height: 82%; }
+  /* Hide decorative extras on mobile to reduce visual noise and lag */
+  .hex-decoration-1, .accent-line { display: none; }
+}
+@media (max-width: 480px) {
+  .profile-wrapper { width: min(88vw, 320px); }
+  .profile-image { width: 74%; height: 74%; }
+  .hex-border-main { width: 82%; height: 86%; }
+}
 .logo-panel::before {
   content: '';
   position: absolute;
@@ -1893,6 +1922,30 @@ select {
 .dark-theme .project-links .btn-demo { color: #ffffff !important; }
 .dark-theme .project-links .btn-code { color: #ffffff !important; }
 
+/* Mobile responsiveness + performance-friendly visuals for projects */
+@media (max-width: 780px) {
+  .projects-header { margin: 0 auto 1.25rem; }
+  .projects-subtitle { font-size: 0.98rem; }
+  .featured-project { padding: 1rem; gap: 1rem; }
+  .projects-grid { gap: 1.2rem; margin-top: 1.25rem; }
+  .project-card {
+    padding: 1rem;
+    border-radius: 16px;
+    /* simpler surface to avoid repaint jank on mobile */
+    background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+  }
+  .project-card::before { content: none; }
+  .project-card:hover { transform: none; box-shadow: 0 2px 10px rgba(15,23,42,0.12); }
+  .project-thumb { height: 140px; box-shadow: 0 2px 12px rgba(0,0,0,0.35); }
+  .project-links { gap: 0.6rem; flex-wrap: wrap; }
+  .project-links a { padding: 0.6rem 0.9rem; }
+}
+@media (max-width: 480px) {
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-thumb { height: 130px; }
+}
+
 /* Timeline */
 /* Experience cards */
 .experience-section .exp-title {
@@ -2504,14 +2557,14 @@ body.modal-open { overflow: hidden; }
   /* Refined inset shadow for modern, clear depth */
   box-shadow: inset 0 8px 16px rgba(0,0,0,0.45), inset 0 -6px 12px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.05);
 }
-.skill-icon { font-weight: 800; letter-spacing: 0.02em; color: #3b3f46; opacity: 0.85; }
+.skill-icon { font-weight: 500; letter-spacing: 0.02em; color: #3b3f46; opacity: 0.85; }
 .skill-card h3 {
   margin: 5px 0;
   color: var(--color-accent);
 }
 .skill-card p {
   margin: 0;
-  font-weight: bold;
+  font-weight: bold-;
   color: var(--color-text);
 }
 .dark-theme .skill-card p { color: #ffffff; }
