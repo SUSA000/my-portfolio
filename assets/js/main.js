@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Make sure this runs after the HTML is loaded
 const typed = new Typed(".text", {
-  strings: ["Frontend Developer.", "Data Scientist", "Data Analyst."],
+  strings: ["Data Analyst", "Data Science Undergraduate", "Full Stack Developer."],
   typeSpeed: 100, // typing speed (ms per character)
   backSpeed: 60, // backspacing speed
   backDelay: 1000, // pause before erasing
@@ -334,9 +334,8 @@ const typed = new Typed(".text", {
         const templateID_Main = EMAILJS_TEMPLATE_ID_OWNER;
         const templateID_Reply = EMAILJS_TEMPLATE_ID_AUTOREPLY;
 
-        // Start sending main email and inform the user immediately
+        // Start sending main email
         const sendPromise = emailjs.sendForm(serviceID, templateID_Main, contactForm);
-        alert("Message sent!");
         await sendPromise;
 
         // Auto-reply right after main succeeds
@@ -344,6 +343,7 @@ const typed = new Typed(".text", {
 
         if (statusEl) statusEl.textContent = "Message Sent Successfully!";
         contactForm.reset();
+        showSuccessModal();
       } catch (err) {
         // Improve error logging to surface EmailJS details
         console.error("EmailJS error:", err);
@@ -409,6 +409,30 @@ const typed = new Typed(".text", {
   setupScrollSpy();
   setupScrollProgress();
 })();
+
+// Success modal helpers
+function showSuccessModal() {
+  const modal = document.getElementById("success-modal");
+  const ok = document.getElementById("modal-ok");
+  if (!modal || !ok) return;
+  modal.classList.add("show");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  ok.focus();
+
+  const close = () => {
+    modal.classList.remove("show");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  };
+
+  // attach one-time listeners
+  const backdrop = modal.querySelector(".modal-backdrop");
+  const onKey = (e) => { if (e.key === "Escape") { close(); } };
+  ok.addEventListener("click", close, { once: true });
+  if (backdrop) backdrop.addEventListener("click", close, { once: true });
+  document.addEventListener("keydown", onKey, { once: true });
+}
 
 // Scroll Spy: highlight nav item based on section in view
 function setupScrollSpy() {
