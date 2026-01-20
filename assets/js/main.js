@@ -117,6 +117,15 @@ const typed = new Typed(".text", {
   const scrollTopBtn = document.querySelector(".scroll-top");
   const yearSpan = document.getElementById("year");
   const header = document.querySelector(".site-header");
+  // Sync CSS --header-offset with actual header height to avoid extra top gap
+  function updateHeaderOffsetVar() {
+    try {
+      const h = header?.offsetHeight || 0;
+      document.documentElement.style.setProperty("--header-offset", `${h}px`);
+    } catch {}
+  }
+  updateHeaderOffsetVar();
+  window.addEventListener("resize", updateHeaderOffsetVar, { passive: true });
 
   // EmailJS configuration
   // Paste your values below from your EmailJS dashboard
@@ -479,14 +488,15 @@ function setupScrollSpy() {
   }
 
   function onScroll() {
-    const y = window.scrollY + headerH + 8; // small buffer
+    const threshold = headerH + 8; // just below fixed header
     let current = sections[0]?.id || "";
     for (const sec of sections) {
-      const top = sec.offsetTop;
-      const bottom = top + sec.offsetHeight;
-      if (y >= top && y < bottom) {
+      const rect = sec.getBoundingClientRect();
+      const top = rect.top;
+      const bottom = rect.bottom;
+      if (top <= threshold && bottom > threshold) {
+        // Do not break; prefer the deepest (last) matching section
         current = sec.id;
-        break;
       }
     }
     // Handle bottom-of-page edge case
@@ -496,18 +506,19 @@ function setupScrollSpy() {
     setActive(current);
   }
 
-  // Smooth scroll with header offset where needed (optional enhancement)
+  // Smooth scroll: rely on CSS scroll-margin-top for header offset
   nav.addEventListener("click", (e) => {
     const a = e.target.closest('a[href^="#"]');
     if (!a) return;
     const target = document.querySelector(a.getAttribute("href"));
     if (target) {
       e.preventDefault();
-      const y =
-        target.getBoundingClientRect().top + window.pageYOffset - headerH - 8;
-      window.scrollTo({ top: y, behavior: "smooth" });
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
       // Set active immediately for responsiveness
       setActive(target.id);
+      // Landing highlight glow
+      target.classList.add("anchor-landing");
+      setTimeout(() => target.classList.remove("anchor-landing"), 1000);
     }
   });
 
@@ -616,6 +627,131 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+// Skills circular ring animation + counter (animate once when visible)
+(function () {
+  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+  const getTargetPercent = (card) => {
+    const circle = card.querySelector(".circle");
+    let p = 0;
+    const cssPCard = card.style.getPropertyValue("--p");
+    if (cssPCard) p = parseInt(cssPCard, 10) || 0;
+    if (!p && circle) {
+      const cssP = circle.style.getPropertyValue("--p");
+      if (cssP) p = parseInt(cssP, 10) || 0;
+    }
+    if (!p) {
+      const txt = card.querySelector(".skill-percent")?.textContent || "";
+      p = parseInt(txt, 10) || 0;
+    }
+    return Math.max(0, Math.min(p, 100));
+  };
+
+  function initCard(card) {
+    const circle = card.querySelector(".circle");
+    const label = card.querySelector(".skill-percent");
+    if (!circle || !label) return;
+    const target = getTargetPercent(card);
+    card.dataset.targetPct = String(target);
+    circle.style.setProperty("--p", "0");
+    label.textContent = "0%";
+    card.dataset.animated = "false";
+  }
+
+  function animateCard(card) {
+    if (card.dataset.animated === "true") return;
+    const circle = card.querySelector(".circle");
+    const label = card.querySelector(".skill-percent");
+    if (!circle || !label) return;
+    const target = parseInt(card.dataset.targetPct || "0", 10);
+    const duration = 1200;
+    const start = performance.now();
+
+    function frame(now) {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = easeOutCubic(t);
+      const val = Math.round(target * eased);
+      circle.style.setProperty("--p", String(val));
+      label.textContent = `${val}%`;
+      if (t < 1) requestAnimationFrame(frame);
+      else {
+        card.dataset.animated = "true";
+        circle.style.setProperty("--p", String(target));
+        label.textContent = `${target}%`;
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function resetCard(card) {
+    const circle = card.querySelector(".circle");
+    const label = card.querySelector(".skill-percent");
+    if (!circle || !label) return;
+    circle.style.setProperty("--p", "0");
+    label.textContent = "0%";
+    card.dataset.animated = "false";
+  }
+
+  const SkillsAnimator = {
+    observer: null,
+    init() {
+      const grid = document.getElementById("skills-grid");
+      if (!grid) return;
+      const cards = Array.from(grid.querySelectorAll(".skill-card"));
+      if (!cards.length) return;
+
+      cards.forEach(initCard);
+
+      if ("IntersectionObserver" in window) {
+        this.observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              const card = entry.target;
+              if (!(card instanceof Element)) return;
+              const isHidden = card.classList.contains("hidden");
+              if (entry.isIntersecting && !isHidden) {
+                animateCard(card);
+                obs.unobserve(card);
+              }
+            });
+          },
+          { threshold: 0.3, rootMargin: "0px 0px -10% 0px" }
+        );
+        cards.forEach((c) => this.observer.observe(c));
+      } else {
+        // Fallback: animate immediately once
+        cards.forEach(animateCard);
+      }
+    },
+    onFilterChange() {
+      const grid = document.getElementById("skills-grid");
+      if (!grid) return;
+      const cards = Array.from(grid.querySelectorAll(".skill-card"));
+      cards.forEach((card) => {
+        const isHidden = card.classList.contains("hidden");
+        if (isHidden) {
+          resetCard(card);
+          if (this.observer) this.observer.observe(card);
+          return;
+        }
+        // Visible: reset and animate once if in view; otherwise observe
+        resetCard(card);
+        const rect = card.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+        if (inView) {
+          animateCard(card);
+          if (this.observer) this.observer.unobserve(card);
+        } else if (this.observer) {
+          this.observer.observe(card);
+        }
+      });
+    },
+  };
+
+  window.SkillsAnimator = SkillsAnimator;
+  document.addEventListener("DOMContentLoaded", () => SkillsAnimator.init());
+})();
 
 // animated background
 const canvas = document.getElementById("canvas-bg");
@@ -794,6 +930,11 @@ function filterSkills(category) {
         const val = btn.getAttribute("data-filter") || (btn.getAttribute("onclick") || "").match(/'(.*?)'/)?.[1] || "";
         btn.classList.toggle("active", val === category);
       });
+    }
+
+    // Re-run skills ring animation logic for newly visible cards
+    if (window.SkillsAnimator && typeof window.SkillsAnimator.onFilterChange === "function") {
+      window.SkillsAnimator.onFilterChange();
     }
   } catch (e) {
     console.warn("filterSkills error", e);

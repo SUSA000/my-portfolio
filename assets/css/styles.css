@@ -2545,8 +2545,8 @@ body.modal-open { overflow: hidden; }
 
 /* The inner hole to make it a ring/doughnut */
 .inner-circle {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   background-color: var(--color-bg);
   border-radius: 50%;
   display: flex;
@@ -2561,6 +2561,10 @@ body.modal-open { overflow: hidden; }
 .skill-card h3 {
   margin: 5px 0;
   color: var(--color-accent);
+  font-family: 'Orbitron', var(--font-sans);
+  font-weight: 200;
+  font-size: 16px;
+  letter-spacing: 0.02em;
 }
 .skill-card p {
   margin: 0;
@@ -2571,7 +2575,7 @@ body.modal-open { overflow: hidden; }
 @media (max-width: 700px) {
   .skills-grid { grid-template-columns: repeat(2, minmax(140px, 1fr)); gap: 1rem; }
   .circle { width: 88px; height: 88px; }
-  .inner-circle { width: 72px; height: 72px; font-size: 0.95rem; }
+  .inner-circle { width: 80px; height: 80px; font-size: 0.95rem; }
   .skill-card p { font-size: 0.9rem; }
 }
 
