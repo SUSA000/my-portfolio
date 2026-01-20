@@ -1,14 +1,14 @@
 [
   {
-    "name": "Responsive Portfolio",
-    "description": "A modern, accessible personal site with dark mode and dynamic project loading.",
-    "tags": ["HTML", "CSS", "JavaScript"],
-    "demo": "https://susa000.github.io/my-portfolio/",
-    "source": "https://github.com/SUSA000/my-portfolio.git",
-    "image": "assets/img/Screenshot 2025-12-20 130551.png"
+    "name": "Eventrix",
+    "description": "MERN stack platform for event equipment rentals with complete CRUD capabilities.",
+    "tags": ["React", "Node.js", "Express", "MongoDB", "REST API"],
+    "demo": "https://6933f12e7e978a11171c8a93--jovial-flan-21f251.netlify.app/",
+    "source": "https://github.com/pushpikaishan/equiment-rental.git",
+    "image": "assets/img/equipment1.png"
   },
   {
-    "name": "FITPULES App",
+    "name": "FITPULSE App",
     "description": "FitPulse is a fitness app that helps you track workouts, stay active, and build healthy habits with ease.",
     "tags": ["Android", "Kotlin", "Fragments"],
     "demo": "https://drive.google.com/file/d/12fB3MXgRA_uS68ztAMG18WdhQAqW1tLM/view?usp=drivesdk",
@@ -16,12 +16,13 @@
     "image": "assets/img/FITPULES.jpg"
   },
   {
-    "name": "Task Tracker",
-    "description": "Productivity task tracker featuring filtering, localStorage persistence and drag & drop reordering.",
-    "tags": ["Productivity", "LocalStorage", "DragDrop"],
-    "demo": "https://yourdomain.com/task-tracker",
-    "source": "https://github.com/yourusername/task-tracker",
-    "image": "assets/img/1712497454927.jpg"
+    
+    "name": "Phoenix AI",
+    "description": "The official chatbot for Benchmark 3.0, a competition hosted by AIESEC in SLIIT. Designed in Figma to support the tournament.",
+    "tags": ["UI/UX Design", "Figma", "Prototype", "AI Chatbot"],
+    "demo": "https://www.figma.com/proto/6ROtYRfBjWQUZm8g5X7vzf/PhoenixAi?node-id=4-2&starting-point-node-id=4%3A2&scaling=scale-down&page-id=0%3A1",
+    "source": "https://github.com/yourusername/phoenix-ai-design",
+    "image": "assets/img/PhoenixAi.png"
   },
   {
     "name": "CSS Design System",
@@ -30,5 +31,13 @@
     "demo": "https://yourdomain.com/design-system",
     "source": "https://github.com/yourusername/design-system",
     "image": "assets/img/1_Sz3KyFn9rdM9M3pHEHScSA.jpg"
+  },
+   {
+    "name": "Responsive Portfolio",
+    "description": "A modern, accessible personal site with dark mode and dynamic project loading.",
+    "tags": ["HTML", "CSS", "JavaScript"],
+    "demo": "https://susa000.github.io/my-portfolio/",
+    "source": "https://github.com/SUSA000/my-portfolio.git",
+    "image": "assets/img/portpolioproject.png"
   }
 ]

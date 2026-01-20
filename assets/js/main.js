@@ -217,7 +217,7 @@ const typed = new Typed(".text", {
                  <path d="M12 .5a12 12 0 0 0-3.794 23.41c.6.111.82-.26.82-.58l-.016-2.038c-3.338.726-4.042-1.61-4.042-1.61-.547-1.389-1.337-1.76-1.337-1.76-1.093-.747.082-.732.082-.732 1.208.085 1.844 1.24 1.844 1.24 1.074 1.84 2.819 1.309 3.507 1.001.108-.787.42-1.31.763-1.612-2.665-.303-5.466-1.332-5.466-5.932 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.523.117-3.176 0 0 1.007-.322 3.3 1.23.957-.266 1.983-.399 3.004-.404 1.02.005 2.046.138 3.005.404 2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.243 2.873.12 3.176.77.84 1.236 1.911 1.236 3.221 0 4.61-2.807 5.625-5.48 5.922.432.372.818 1.103.818 2.222l-.015 3.293c0 .323.216.7.826.579A12 12 0 0 0 12 .5Z"/>
                </svg>
              </span>
-             <span class="btn-text">View Code</span>
+             <span class="btn-text">Git</span>
            </a>`
         : "";
 
@@ -433,6 +433,29 @@ function showSuccessModal() {
   if (backdrop) backdrop.addEventListener("click", close, { once: true });
   document.addEventListener("keydown", onKey, { once: true });
 }
+
+// About CV buttons: download + view
+document.addEventListener("DOMContentLoaded", () => {
+  const btnDownload = document.getElementById("btnCvDownload");
+  const btnView = document.getElementById("btnCvView");
+  const cvPath = "assets/img/sushan%20tharuka%20cv%20spar.pdf";
+
+  if (btnDownload) {
+    btnDownload.addEventListener("click", () => {
+      const a = document.createElement("a");
+      a.href = cvPath;
+      a.download = "Sushan_Tharuka_CV.pdf";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    });
+  }
+  if (btnView) {
+    btnView.addEventListener("click", () => {
+      window.open(cvPath, "_blank", "noopener");
+    });
+  }
+});
 
 // Scroll Spy: highlight nav item based on section in view
 function setupScrollSpy() {

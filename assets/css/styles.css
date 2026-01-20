@@ -14,67 +14,67 @@
   background: transparent;
   border: 0;
   box-shadow: none;
-  }
+}
 
-  /* Hex profile - sample-based */
-  .profile-wrapper {
-    position: relative;
-    width: 400px;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .hex-shape {
-    position: absolute;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  }
-  .profile-image {
-    width: 280px;
-    height: 320px;
-    background-color: #333;
-    z-index: 10;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .profile-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-  }
-  .hex-border-main {
-    width: 300px;
-    height: 345px;
-    background: linear-gradient(135deg, var(--light-orange, #ff5e00), var(--primary-orange, #FF8C00));
-    z-index: 5;
-  }
-  .hex-decoration-1 {
-    width: 340px;
-    height: 390px;
-    background:rgb(188, 116, 56);
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: -20px;
-    left: -30px;
-  }
-  .hex-decoration-1::after {
-    content: "";
-    width: 98%;
-    height: 98%;
-    background-color: var(--color-bg);
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  }
-  .accent-line {
-    position: absolute;
-    background-color: rgb(253, 185, 117);
-    z-index: 0;
-  }
+/* Hex profile - sample-based */
+.profile-wrapper {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hex-shape {
+  position: absolute;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.profile-image {
+  width: 280px;
+  height: 320px;
+  background-color: #333;
+  z-index: 10;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.hex-border-main {
+  width: 300px;
+  height: 345px;
+  background: linear-gradient(135deg, var(--light-orange, #ff5e00), var(--primary-orange, #FF8C00));
+  z-index: 5;
+}
+.hex-decoration-1 {
+  width: 340px;
+  height: 390px;
+  background: rgb(188, 116, 56);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -20px;
+  left: -30px;
+}
+.hex-decoration-1::after {
+  content: "";
+  width: 98%;
+  height: 98%;
+  background-color: var(--color-bg);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.accent-line {
+  position: absolute;
+  background-color: rgb(253, 185, 117);
+  z-index: 0;
+}
   .line-top-left {
     width: 4px;
     height: 100px;
@@ -165,7 +165,17 @@
 
 /* Responsive fallback: tighter screens use 2 per row, then 1 */
 @media (max-width: 700px) {
-  .skills-logo-grid { grid-template-columns: repeat(2, 1fr); }
+  /* Keep desktop look but smaller footprint on mobile */
+  .skills-logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 16px;
+    margin-top: 2.2rem;
+  }
+  .logo-panel { width: 72px; border-radius: 18px; }
+  .logo-panel img { width: 64%; height: 64%; margin: 18%; animation: none; }
+  /* Disable rotating laser/frame on mobile to prevent lag */
+  .logo-panel::before,
+  .logo-panel::after { display: none; }
 }
 @media (max-width: 420px) {
   .skills-logo-grid { grid-template-columns: 1fr; }
@@ -426,6 +436,7 @@ select {
 .about-description.collapsed {
   display: -webkit-box;
   -webkit-line-clamp: 6; /* show first 6 lines */
+  line-clamp: 6;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -581,6 +592,91 @@ select {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+/* About: Water-fill CTA buttons */
+.about-cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: 1.25rem auto 0;
+  padding: 0 var(--page-x-pad);
+  flex-wrap: wrap;
+}
+.water-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  border-radius: 14px;
+  border: 2px solid var(--color-accent);
+  overflow: hidden;
+  cursor: pointer;
+  background: transparent;
+  color: var(--color-accent);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, color 0.2s ease, background 0.2s ease;
+  /* wave control variables (overridable by speed classes) */
+  --wave-speed1: 6s;
+  --wave-speed2: 8s;
+  --wave-horiz1: 9s;
+  --wave-horiz2: 11s;
+}
+.water-btn .label { position: relative; z-index: 2; }
+.water-btn i { position: relative; z-index: 2; font-size: 1.1rem; }
+.water-btn .wave {
+  position: absolute;
+  left: -10%;
+  bottom: -42%;
+  width: 160%;
+  height: 160%;
+  background: radial-gradient(60% 60% at 50% 50%, rgba(255, 138, 61, 0.42), rgba(255, 138, 61, 0.18) 60%, transparent 72%);
+  background-size: 200% 100%;
+  transform: translateY(0);
+  animation: waveFloat var(--wave-speed1) ease-in-out infinite, waveSlide var(--wave-horiz1) linear infinite;
+  filter: blur(2px);
+  z-index: 1;
+}
+.water-btn .wave2 {
+  opacity: 0.75;
+  bottom: -44%;
+  animation: waveFloat var(--wave-speed2) ease-in-out infinite reverse, waveSlide var(--wave-horiz2) linear infinite reverse;
+}
+.water-btn:hover { transform: translateY(-2px); }
+.water-btn:active { transform: translateY(0); }
+.water-primary {
+  background: var(--color-accent);
+  color: #081b29;
+  box-shadow: 0 0 14px rgba(255, 138, 61, 0.45), 0 0 30px rgba(255, 138, 61, 0.25);
+}
+.water-primary .wave { background: radial-gradient(60% 60% at 50% 50%, rgba(8, 27, 41, 0.28), rgba(8, 27, 41, 0.18) 60%, transparent 72%); }
+.water-outline:hover {
+  box-shadow: 0 0 12px rgba(255, 138, 61, 0.3), 0 0 26px rgba(255, 138, 61, 0.18);
+  background: rgba(255, 138, 61, 0.06);
+}
+/* subtle “fill rise” on hover */
+.water-btn:hover .wave { bottom: -36%; }
+.water-btn:hover .wave2 { bottom: -34%; }
+
+/* size variants */
+.water-btn.sm { padding: 10px 20px; font-size: 0.9rem; border-radius: 12px; }
+.water-btn.lg { padding: 14px 34px; font-size: 1.05rem; border-radius: 16px; }
+
+/* speed variants via CSS variables */
+.water-slow { --wave-speed1: 9s; --wave-speed2: 12s; --wave-horiz1: 12s; --wave-horiz2: 14s; }
+.water-fast { --wave-speed1: 4.5s; --wave-speed2: 6s; --wave-horiz1: 6s; --wave-horiz2: 7.5s; }
+
+@keyframes waveFloat {
+  0% { transform: translateY(10%); }
+  50% { transform: translateY(-6%); }
+  100% { transform: translateY(10%); }
+}
+@keyframes waveSlide {
+  0% { background-position-x: 0%; }
+  100% { background-position-x: 100%; }
 }
 .timeline-card {
   display: flex;
@@ -2368,7 +2464,7 @@ body.modal-open { overflow: hidden; }
   padding: 0.25rem 0 0.6rem; /* minimal spacing */
   box-shadow: none; /* no shadow */
 }
-.skill-card:hover { /* no hover decoration on transparent card */ }
+.skill-card:hover { transform: none; }
 
 /* The Circular Progress Bar (The Magic Part) */
 .circle {
@@ -2420,7 +2516,14 @@ body.modal-open { overflow: hidden; }
 }
 .dark-theme .skill-card p { color: #ffffff; }
 @media (max-width: 700px) {
-  .skills-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
-  .circle { width: 100px; height: 100px; }
-  .inner-circle { width: 84px; height: 84px; font-size: 1.6rem; }
+  .skills-grid { grid-template-columns: repeat(2, minmax(140px, 1fr)); gap: 1rem; }
+  .circle { width: 88px; height: 88px; }
+  .inner-circle { width: 72px; height: 72px; font-size: 0.95rem; }
+  .skill-card p { font-size: 0.9rem; }
+}
+
+/* Respect reduced-motion preferences on all devices */
+@media (prefers-reduced-motion: reduce) {
+  .logo-panel img { animation: none !important; }
+  .logo-panel::before { animation: none !important; }
 }
