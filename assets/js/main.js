@@ -940,3 +940,95 @@ function filterSkills(category) {
     console.warn("filterSkills error", e);
   }
 }
+
+// Crypto Scanner Animation (mobile only): populate and detect side coloring
+document.addEventListener("DOMContentLoaded", () => {
+  try {
+    const scanner = document.getElementById("cryptoScanner");
+    if (!scanner) return;
+
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (!isMobile) return;
+
+    const track = scanner.querySelector(".belt-track");
+    if (!track) return;
+
+    const baseItems = [
+      { type: "icon", cls: "devicon-html5-plain" },
+      { type: "icon", cls: "devicon-css3-plain" },
+      { type: "icon", cls: "devicon-javascript-plain" },
+      { type: "icon", cls: "devicon-react-plain" },
+      { type: "icon", cls: "devicon-tailwindcss-plain" },
+      { type: "icon", cls: "devicon-php-plain" },
+      { type: "icon", cls: "devicon-nodejs-plain" },
+      { type: "icon", cls: "devicon-mysql-plain" },
+      { type: "icon", cls: "devicon-mongodb-plain" },
+      { type: "icon", cls: "devicon-kotlin-plain" },
+      { type: "icon", cls: "devicon-git-plain" },
+      { type: "icon", cls: "devicon-vscode-plain" },
+      { type: "icon", cls: "devicon-figma-plain" },
+    ];
+
+    const repetitions = 20; // Repeat base set 20 times
+    for (let r = 0; r < repetitions; r++) {
+      baseItems.forEach((item) => {
+        const span = document.createElement("span");
+        span.className = "crypto-item right-muted"; // start muted (right side default)
+        if (item.type === "text") {
+          span.classList.add(item.cls);
+          span.textContent = item.text;
+        } else {
+          const i = document.createElement("i");
+          i.className = item.cls;
+          span.appendChild(i);
+        }
+        track.appendChild(span);
+      });
+    }
+    // Duplicate content for seamless loop (animate to -50%)
+    track.innerHTML += track.innerHTML;
+
+    const items = scanner.querySelectorAll(".crypto-item");
+    let centerX = 0;
+    const updateCenter = () => {
+      const rect = scanner.getBoundingClientRect();
+      centerX = rect.left + rect.width / 2;
+    };
+    updateCenter();
+    window.addEventListener("resize", updateCenter, { passive: true });
+
+    const detect = () => {
+      items.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const midX = rect.left + rect.width / 2;
+        const left = midX < centerX;
+        el.classList.toggle("left-bright", left);
+        el.classList.toggle("right-muted", !left);
+        // Toggle Devicon colored variant when crossing the scan line
+        const icon = el.querySelector("i");
+        if (icon) {
+          if (left) icon.classList.add("colored");
+          else icon.classList.remove("colored");
+        }
+      });
+    };
+
+    // Set initial side states immediately, then keep updating
+    detect();
+    const timer = setInterval(detect, 8); // ~125Hz updates
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const handleReduce = () => {
+      if (reduced.matches) {
+        track.style.animation = "none";
+        clearInterval(timer);
+        // Default muted; briefly highlight left side once
+        detect();
+      }
+    };
+    reduced.addEventListener("change", handleReduce);
+    handleReduce();
+  } catch (e) {
+    console.warn("Crypto scanner init failed:", e);
+  }
+});

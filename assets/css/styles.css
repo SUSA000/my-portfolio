@@ -1,3 +1,79 @@
+/* Crypto Scanner (Mobile Only) */
+.crypto-scanner {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 68px;
+  margin: 14px 0 8px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(6px);
+}
+
+@media (max-width: 768px) {
+  .crypto-scanner { display: block; }
+}
+
+.crypto-scanner .scanner-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, #ffd54d 0%, #ffcc00 60%, #ffeb3b 100%);
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.9), 0 0 24px rgba(255, 204, 0, 0.5);
+}
+
+.crypto-scanner .scanner-belt {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.crypto-scanner .belt-track {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  will-change: transform;
+  animation: beltScroll 200s linear infinite;
+}
+
+@keyframes beltScroll {
+  0% { transform: translate3d(0, -50%, 0); }
+  100% { transform: translate3d(-50%, -50%, 0); }
+}
+
+.crypto-item {
+  font-size: 24px;
+  line-height: 1;
+  transition: color 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+              filter 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+              text-shadow 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: color, filter, text-shadow;
+}
+.crypto-item i { font-size: 26px; }
+
+.crypto-item.left-bright {
+  color: #ff6b00;
+  text-shadow: 0 0 8px rgba(255, 107, 0, 0.6), 0 0 18px rgba(255, 200, 70, 0.4);
+  filter: none;
+}
+
+.crypto-item.right-muted {
+  color: rgba(255, 255, 255, 0.35);
+  filter: grayscale(100%) brightness(0.7);
+  text-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crypto-scanner .belt-track { animation: none; }
+}
 .skills-two-col {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
