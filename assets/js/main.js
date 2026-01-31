@@ -954,19 +954,19 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!track) return;
 
     const baseItems = [
-      { type: "icon", cls: "devicon-html5-plain" },
-      { type: "icon", cls: "devicon-css3-plain" },
-      { type: "icon", cls: "devicon-javascript-plain" },
-      { type: "icon", cls: "devicon-react-plain" },
-      { type: "icon", cls: "devicon-tailwindcss-plain" },
-      { type: "icon", cls: "devicon-php-plain" },
-      { type: "icon", cls: "devicon-nodejs-plain" },
-      { type: "icon", cls: "devicon-mysql-plain" },
-      { type: "icon", cls: "devicon-mongodb-plain" },
-      { type: "icon", cls: "devicon-kotlin-plain" },
-      { type: "icon", cls: "devicon-git-plain" },
-      { type: "icon", cls: "devicon-vscode-plain" },
-      { type: "icon", cls: "devicon-figma-plain" },
+      { type: "icon", cls: "devicon-html5-plain", accent: "#E34F26" },
+      { type: "icon", cls: "devicon-css3-plain", accent: "#1572B6" },
+      { type: "icon", cls: "devicon-javascript-plain", accent: "#F7DF1E" },
+      { type: "icon", cls: "devicon-react-plain", accent: "#61DAFB" },
+      { type: "icon", cls: "devicon-tailwindcss-plain", accent: "#38B2AC" },
+      { type: "icon", cls: "devicon-php-plain", accent: "#777BB4" },
+      { type: "icon", cls: "devicon-nodejs-plain", accent: "#83CD29" },
+      { type: "icon", cls: "devicon-mysql-plain", accent: "#4479A1" },
+      { type: "icon", cls: "devicon-mongodb-plain", accent: "#47A248" },
+      { type: "icon", cls: "devicon-kotlin-plain", accent: "#7F52FF" },
+      { type: "icon", cls: "devicon-git-plain", accent: "#F05032" },
+      { type: "icon", cls: "devicon-vscode-plain", accent: "#007ACC" },
+      { type: "icon", cls: "devicon-figma-plain", accent: "#F24E1E" },
     ];
 
     const repetitions = 20; // Repeat base set 20 times
@@ -981,6 +981,9 @@ document.addEventListener("DOMContentLoaded", () => {
           const i = document.createElement("i");
           i.className = item.cls;
           span.appendChild(i);
+          if (item.accent) {
+            span.dataset.accent = item.accent;
+          }
         }
         track.appendChild(span);
       });
@@ -997,6 +1000,15 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCenter();
     window.addEventListener("resize", updateCenter, { passive: true });
 
+    const hexToRgb = (hex) => {
+      const h = hex.replace('#','');
+      const bigint = parseInt(h.length === 3 ? h.split('').map(c=>c+c).join('') : h, 16);
+      const r = (bigint >> 16) & 255;
+      const g = (bigint >> 8) & 255;
+      const b = bigint & 255;
+      return { r, g, b };
+    };
+
     const detect = () => {
       items.forEach((el) => {
         const rect = el.getBoundingClientRect();
@@ -1009,6 +1021,18 @@ document.addEventListener("DOMContentLoaded", () => {
         if (icon) {
           if (left) icon.classList.add("colored");
           else icon.classList.remove("colored");
+        }
+        // Apply per-item accent and glow when on the left
+        const accent = el.dataset.accent;
+        if (left && accent) {
+          const { r, g, b } = hexToRgb(accent);
+          el.style.setProperty('--accent', accent);
+          el.style.setProperty('--glow1', `rgba(${r}, ${g}, ${b}, 0.6)`);
+          el.style.setProperty('--glow2', `rgba(${r}, ${g}, ${b}, 0.35)`);
+        } else {
+          el.style.removeProperty('--accent');
+          el.style.removeProperty('--glow1');
+          el.style.removeProperty('--glow2');
         }
       });
     };

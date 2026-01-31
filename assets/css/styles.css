@@ -60,8 +60,8 @@
 .crypto-item i { font-size: 26px; }
 
 .crypto-item.left-bright {
-  color: #ff6b00;
-  text-shadow: 0 0 8px rgba(255, 107, 0, 0.6), 0 0 18px rgba(255, 200, 70, 0.4);
+  color: var(--accent, #ff6b00);
+  text-shadow: 0 0 8px var(--glow1, rgba(255, 107, 0, 0.6)), 0 0 18px var(--glow2, rgba(255, 200, 70, 0.4));
   filter: none;
 }
 
