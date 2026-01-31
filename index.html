@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -20,22 +20,31 @@
     <link rel="canonical" href="https://yourdomain.com" />
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
   </head>
   <body>
     <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
     <canvas id="canvas-bg"></canvas>
-    
+
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" role="banner">
       <nav class="nav" aria-label="Primary navigation">
-        <div class="logo" aria-label="Home"><a href="#hero" title="Go to Home">ST</a></div>
+        <div class="logo" aria-label="Home">
+          <a href="#hero" title="Go to Home">ST</a>
+        </div>
         <button
           class="nav-toggle"
           aria-expanded="false"
@@ -51,7 +60,12 @@
           <li><a href="#projects">Projects</a></li>
           <li><a href="#experience">Experience</a></li>
           <li>
-            <a href="assets/img/sushan%20tharuka%20cv%20spar.pdf" download aria-label="Download CV">Resume</a>
+            <a
+              href="assets/img/sushan%20tharuka%20cv%20spar.pdf"
+              download
+              aria-label="Download CV"
+              >Resume</a
+            >
           </li>
           <li><a href="#contact" class="talk-link">Let's Talk</a></li>
           <li>
@@ -91,7 +105,9 @@
                 <span class="btn-text">Download CV</span>
                 <i class="bx bx-download" aria-hidden="true"></i>
               </a>
-              <a href="#contact" class="btn outline cta-outline">Get In Touch</a>
+              <a href="#contact" class="btn outline cta-outline"
+                >Get In Touch</a
+              >
             </div>
             <ul class="hero-social" role="list" aria-label="Social links">
               <li>
@@ -150,7 +166,11 @@
               <div class="hex-shape hex-border-main"></div>
 
               <div class="hex-shape profile-image">
-                <img src="assets/img/profile image.jpg" alt="Profile Picture" loading="lazy" />
+                <img
+                  src="assets/img/profile image.jpg"
+                  alt="Profile Picture"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
@@ -177,78 +197,137 @@
               <h3 class="about-name">Sushan Tharuka</h3>
               <p class="about-role">Data Science Undergraduate at SLIIT</p>
             </header>
-            <div id="about-desc" class="about-description collapsed" aria-live="polite">
+            <div
+              id="about-desc"
+              class="about-description collapsed"
+              aria-live="polite"
+            >
               <p>
-                I am a third-year IT undergraduate at SLIIT specializing in Data Science, currently
-                building a strong foundation in statistics, machine learning, and software development.
-                My passion lies in turning raw data into clear insights and practical solutions—whether
-                through data visualization, predictive models, or clean analytical dashboards.
+                I am a third-year IT undergraduate at SLIIT specializing in Data
+                Science, currently building a strong foundation in statistics,
+                machine learning, and software development. My passion lies in
+                turning raw data into clear insights and practical
+                solutions—whether through data visualization, predictive models,
+                or clean analytical dashboards.
               </p>
               <p>
-                Over the past two years, I have worked on various academic and personal projects involving
-                data cleaning, exploratory analysis, and ML modeling, continuously improving my skills in
-                Python, SQL, and modern data tools. My goal is to grow into a data professional who can
-                collaborate with teams to solve real-world problems in areas like business analytics,
-                finance, and product optimization.
+                Over the past two years, I have worked on various academic and
+                personal projects involving data cleaning, exploratory analysis,
+                and ML modeling, continuously improving my skills in Python,
+                SQL, and modern data tools. My goal is to grow into a data
+                professional who can collaborate with teams to solve real-world
+                problems in areas like business analytics, finance, and product
+                optimization.
               </p>
               <p>
-                Outside of coursework, I enjoy experimenting with new libraries, following industry best
-                practices, and learning how to communicate technical results to non-technical stakeholders.
-                I am currently focused on strengthening my portfolio with real-world datasets, collaborative
-                projects, and internships in the data science field.
+                Outside of coursework, I enjoy experimenting with new libraries,
+                following industry best practices, and learning how to
+                communicate technical results to non-technical stakeholders. I
+                am currently focused on strengthening my portfolio with
+                real-world datasets, collaborative projects, and internships in
+                the data science field.
               </p>
             </div>
-            <button class="read-more-toggle" aria-expanded="false" aria-controls="about-desc">Read more</button>
+            <button
+              class="read-more-toggle"
+              aria-expanded="false"
+              aria-controls="about-desc"
+            >
+              Read more
+            </button>
+
             <section class="about-skills-card" aria-label="Key Skills">
               <header class="about-skills-header">
-                <i class='bx bxs-notepad' aria-hidden="true"></i>
+                <div class="header-icon-box">
+                  <i class="bx bxs-layer" aria-hidden="true"></i>
+                </div>
                 <h3 class="about-skills-title">Key Skills</h3>
               </header>
-              <div class="about-skills-grid" role="grid">
-                <div class="ask-col" role="presentation">
+
+              <div class="about-skills-grid">
+                <div class="ask-col">
                   <h4 class="ask-col-title">Core Data</h4>
-                  <div class="ask-item" role="gridcell">
-                    <span class="ask-icon"><i class="devicon-python-plain colored" aria-hidden="true"></i></span>
-                    <span class="ask-text">Python</span>
-                  </div>
-                  <div class="ask-item" role="gridcell">
-                    <span class="ask-icon"><i class="devicon-pandas-original colored" aria-hidden="true"></i></span>
-                    <span class="ask-text">Pandas</span>
-                  </div>
-                  <div class="ask-item" role="gridcell">
-                    <span class="ask-icon"><i class="devicon-scikitlearn-plain colored" aria-hidden="true"></i></span>
-                    <span class="ask-text">Scikit‑Learn</span>
-                  </div>
-                  <div class="ask-item" role="gridcell">
-                    <span class="ask-icon"><i class='bx bxs-bar-chart-alt-2' aria-hidden="true"></i></span>
-                    <span class="ask-text">Data Visualization</span>
-                  </div>
-                  <div class="ask-item" role="gridcell">
-                    <span class="ask-icon"><i class='bx bxs-brain' aria-hidden="true"></i></span>
-                    <span class="ask-text">Machine Learning</span>
+                  <div class="ask-list">
+                    <div class="ask-item">
+                      <span class="ask-icon"
+                        ><i class="devicon-python-plain colored"></i
+                      ></span>
+                      <span class="ask-text">Python</span>
+                    </div>
+
+                    <div class="ask-item">
+                      <span class="ask-icon"
+                        ><i class="devicon-pandas-original colored"></i
+                      ></span>
+                      <span class="ask-text">Pandas</span>
+                    </div>
+
+                    <div class="ask-item">
+                      <span class="ask-icon"
+                        ><i class="devicon-scikitlearn-plain colored"></i
+                      ></span>
+                      <span class="ask-text">Scikit-Learn</span>
+                    </div>
+
+                    <div class="ask-item">
+                      <span class="ask-icon"
+                        ><i
+                          class="bx bxs-bar-chart-alt-2"
+                          style="color: #ff6b00"
+                        ></i
+                      ></span>
+                      <span class="ask-text">Data Visualization</span>
+                    </div>
+
+                    <div class="ask-item">
+                      <span class="ask-icon"
+                        ><i class="bx bxs-brain" style="color: #ff6b00"></i
+                      ></span>
+                      <span class="ask-text">Machine Learning</span>
+                    </div>
                   </div>
                 </div>
-                <div class="ask-col" role="presentation">
-                  <h4 class="ask-col-title">Tools &amp; DB</h4>
-                  <div class="ask-item" role="gridcell">
-                    <span class="ask-icon"><i class="devicon-mysql-original colored" aria-hidden="true"></i></span>
-                    <span class="ask-text">MySQL</span>
-                  </div>
-                  <div class="ask-item" role="gridcell">
-                    <span class="ask-icon"><i class="devicon-mongodb-plain colored" aria-hidden="true"></i></span>
-                    <span class="ask-text">MongoDB</span>
-                  </div>
-                  <div class="ask-item" role="gridcell">
-                    <span class="ask-icon"><i class='bx bxs-pie-chart-alt' aria-hidden="true"></i></span>
-                    <span class="ask-text">Power BI</span>
-                  </div>
-                  <div class="ask-item" role="gridcell">
-                    <span class="ask-icon"><i class="devicon-git-plain colored" aria-hidden="true"></i></span>
-                    <span class="ask-text">Git / GitHub</span>
-                  </div>
-                  <div class="ask-item" role="gridcell">
-                    <span class="ask-icon"><i class="devicon-react-original colored" aria-hidden="true"></i></span>
-                    <span class="ask-text">React / Node.js</span>
+
+                <div class="ask-col">
+                  <h4 class="ask-col-title">Tools & DB</h4>
+                  <div class="ask-list">
+                    <div class="ask-item">
+                      <span class="ask-icon"
+                        ><i class="devicon-mysql-original colored"></i
+                      ></span>
+                      <span class="ask-text">MySQL</span>
+                    </div>
+
+                    <div class="ask-item">
+                      <span class="ask-icon"
+                        ><i class="devicon-mongodb-plain colored"></i
+                      ></span>
+                      <span class="ask-text">MongoDB</span>
+                    </div>
+
+                    <div class="ask-item">
+                      <span class="ask-icon"
+                        ><i
+                          class="bx bxs-pie-chart-alt"
+                          style="color: #f2c811"
+                        ></i
+                      ></span>
+                      <span class="ask-text">Power BI</span>
+                    </div>
+
+                    <div class="ask-item">
+                      <span class="ask-icon"
+                        ><i class="devicon-git-plain colored"></i
+                      ></span>
+                      <span class="ask-text">Git / GitHub</span>
+                    </div>
+
+                    <div class="ask-item">
+                      <span class="ask-icon"
+                        ><i class="devicon-react-original colored"></i
+                      ></span>
+                      <span class="ask-text">React / Node.js</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -267,7 +346,9 @@
                     Data Science Specialization
                   </h4>
                   <p class="card-text">
-                    Selected for the specialized Data Science track in my 3rd year at SLIIT. Focused on advanced statistical modeling, machine learning algorithms, and big data technologies.
+                    Selected for the specialized Data Science track in my 3rd
+                    year at SLIIT. Focused on advanced statistical modeling,
+                    machine learning algorithms, and big data technologies.
                   </p>
                 </div>
               </article>
@@ -296,32 +377,41 @@
                     IT &amp; Development Foundation
                   </h4>
                   <p class="card-text">
-                    Built a strong software engineering background (Web & Mobile) over two years. This technical foundation now allows me to build custom dashboards and deploy ML models effectively.
+                    Built a strong software engineering background (Web &
+                    Mobile) over two years. This technical foundation now allows
+                    me to build custom dashboards and deploy ML models
+                    effectively.
                   </p>
                 </div>
               </article>
             </div>
           </div>
         </div>
-        
+
         <!-- About: CV Action Buttons -->
         <div class="about-cta-buttons" aria-label="About actions">
-          <button type="button" id="btnCvDownload" class="water-btn water-primary lg water-fast">
+          <button
+            type="button"
+            id="btnCvDownload"
+            class="water-btn water-primary lg water-fast"
+          >
             <span class="wave" aria-hidden="true"></span>
             <span class="wave wave2" aria-hidden="true"></span>
             <span class="label">Download CV</span>
-            <i class='bx bx-download' aria-hidden="true"></i>
+            <i class="bx bx-download" aria-hidden="true"></i>
           </button>
-          <button type="button" id="btnCvView" class="water-btn water-outline water-slow">
+          <button
+            type="button"
+            id="btnCvView"
+            class="water-btn water-outline water-slow"
+          >
             <span class="wave" aria-hidden="true"></span>
             <span class="wave wave2" aria-hidden="true"></span>
             <span class="label">View Online</span>
-            <i class='bx bx-link-external' aria-hidden="true"></i>
+            <i class="bx bx-link-external" aria-hidden="true"></i>
           </button>
         </div>
-
       </section>
-      
 
       <!-- Skills Section -->
       <section
@@ -334,77 +424,178 @@
             <span>My</span> <span class="skills-highlight">Skills</span>
           </h2>
           <p class="skills-modern-desc">
-            A diverse set of technical skills that I've developed through
-            continuous learning and hands-on projects over 2 years of dedicated
-            learning and 6 months of practical experience.
+            A selection of projects that demonstrate my skills in data analysis,
+            machine learning, and problem-solving, applying statistical and
+            computational techniques to real-world datasets.
           </p>
           <!-- Skills Category Filters -->
           <div class="filter-buttons" role="toolbar" aria-label="Skill filters">
-            <button class="btn active" onclick="filterSkills('all')" data-filter="all">All</button>
-            <button class="btn" onclick="filterSkills('frontend')" data-filter="frontend">Frontend</button>
-            <button class="btn" onclick="filterSkills('backend')" data-filter="backend">Backend</button>
-            <button class="btn" onclick="filterSkills('mobile')" data-filter="mobile">Mobile</button>
-            <button class="btn" onclick="filterSkills('database')" data-filter="database">Database</button>
-            <button class="btn" onclick="filterSkills('tools')" data-filter="tools">Tools</button>
+            <button
+              class="btn active"
+              onclick="filterSkills('all')"
+              data-filter="all"
+            >
+              All
+            </button>
+            <button
+              class="btn"
+              onclick="filterSkills('frontend')"
+              data-filter="frontend"
+            >
+              Frontend
+            </button>
+            <button
+              class="btn"
+              onclick="filterSkills('backend')"
+              data-filter="backend"
+            >
+              Backend
+            </button>
+            <button
+              class="btn"
+              onclick="filterSkills('mobile')"
+              data-filter="mobile"
+            >
+              Mobile
+            </button>
+            <button
+              class="btn"
+              onclick="filterSkills('database')"
+              data-filter="database"
+            >
+              Database
+            </button>
+            <button
+              class="btn"
+              onclick="filterSkills('tools')"
+              data-filter="tools"
+            >
+              Tools
+            </button>
           </div>
           <div class="skills-two-col">
             <div class="skills-left">
               <div class="skills-logo-grid" aria-label="Technology logos">
                 <!-- Frontend: match right-side order -->
                 <div class="logo-card" data-category="frontend">
-                  <div class="logo-panel"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML" /></div>
+                  <div class="logo-panel">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                      alt="HTML"
+                    />
+                  </div>
                   <span>HTML</span>
                 </div>
                 <div class="logo-card" data-category="frontend">
-                  <div class="logo-panel"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS" /></div>
+                  <div class="logo-panel">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+                      alt="CSS"
+                    />
+                  </div>
                   <span>CSS</span>
                 </div>
                 <div class="logo-card" data-category="frontend">
-                  <div class="logo-panel"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" /></div>
+                  <div class="logo-panel">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                      alt="JavaScript"
+                    />
+                  </div>
                   <span>JavaScript</span>
                 </div>
                 <div class="logo-card" data-category="frontend">
-                  <div class="logo-panel"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" /></div>
+                  <div class="logo-panel">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                      alt="React"
+                    />
+                  </div>
                   <span>React</span>
                 </div>
                 <div class="logo-card" data-category="frontend">
-                  <div class="logo-panel"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" /></div>
+                  <div class="logo-panel">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+                      alt="Tailwind CSS"
+                    />
+                  </div>
                   <span>Tailwind</span>
                 </div>
                 <!-- Backend -->
                 <div class="logo-card" data-category="backend">
-                  <div class="logo-panel"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP" /></div>
+                  <div class="logo-panel">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
+                      alt="PHP"
+                    />
+                  </div>
                   <span>PHP</span>
                 </div>
                 <div class="logo-card" data-category="backend">
-                  <div class="logo-panel"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" /></div>
+                  <div class="logo-panel">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"
+                      alt="Node.js"
+                    />
+                  </div>
                   <span>Node.js</span>
                 </div>
                 <!-- Database -->
                 <div class="logo-card" data-category="database">
-                  <div class="logo-panel"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL" /></div>
+                  <div class="logo-panel">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
+                      alt="MySQL"
+                    />
+                  </div>
                   <span>MySQL</span>
                 </div>
                 <div class="logo-card" data-category="database">
-                  <div class="logo-panel"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB" /></div>
+                  <div class="logo-panel">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+                      alt="MongoDB"
+                    />
+                  </div>
                   <span>MongoDB</span>
                 </div>
                 <!-- Mobile -->
                 <div class="logo-card" data-category="mobile">
-                  <div class="logo-panel"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg" alt="Kotlin" /></div>
+                  <div class="logo-panel">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg"
+                      alt="Kotlin"
+                    />
+                  </div>
                   <span>Kotlin</span>
                 </div>
                 <!-- Tools -->
                 <div class="logo-card" data-category="tools">
-                  <div class="logo-panel"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" /></div>
+                  <div class="logo-panel">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+                      alt="Git"
+                    />
+                  </div>
                   <span>Git</span>
                 </div>
                 <div class="logo-card" data-category="tools">
-                  <div class="logo-panel"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VS Code" /></div>
+                  <div class="logo-panel">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"
+                      alt="VS Code"
+                    />
+                  </div>
                   <span>VS Code</span>
                 </div>
                 <div class="logo-card" data-category="tools">
-                  <div class="logo-panel"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" alt="Figma" /></div>
+                  <div class="logo-panel">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+                      alt="Figma"
+                    />
+                  </div>
                   <span>Figma</span>
                 </div>
               </div>
@@ -412,76 +603,180 @@
             <div class="skills-right">
               <div id="skills-grid" class="skills-grid" aria-live="polite">
                 <!-- Frontend -->
-                <div class="skill-card" data-category="frontend" style="--p:85; --c: var(--primary-orange)">
-                  <div class="circle"><div class="inner-circle"><span class="skill-icon">HTML</span></div></div>
+                <div
+                  class="skill-card"
+                  data-category="frontend"
+                  style="--p: 85; --c: var(--primary-orange)"
+                >
+                  <div class="circle">
+                    <div class="inner-circle">
+                      <span class="skill-icon">HTML</span>
+                    </div>
+                  </div>
                   <p class="skill-percent">85%</p>
                   <h3>HTML</h3>
                 </div>
-                <div class="skill-card" data-category="frontend" style="--p:80; --c: var(--primary-orange)">
-                  <div class="circle"><div class="inner-circle"><span class="skill-icon">CSS</span></div></div>
+                <div
+                  class="skill-card"
+                  data-category="frontend"
+                  style="--p: 80; --c: var(--primary-orange)"
+                >
+                  <div class="circle">
+                    <div class="inner-circle">
+                      <span class="skill-icon">CSS</span>
+                    </div>
+                  </div>
                   <p class="skill-percent">80%</p>
                   <h3>CSS</h3>
                 </div>
-                <div class="skill-card" data-category="frontend" style="--p:60; --c: var(--primary-orange)">
-                  <div class="circle"><div class="inner-circle"><span class="skill-icon">JS</span></div></div>
+                <div
+                  class="skill-card"
+                  data-category="frontend"
+                  style="--p: 60; --c: var(--primary-orange)"
+                >
+                  <div class="circle">
+                    <div class="inner-circle">
+                      <span class="skill-icon">JS</span>
+                    </div>
+                  </div>
                   <p class="skill-percent">60%</p>
                   <h3>JavaScript</h3>
                 </div>
-                <div class="skill-card" data-category="frontend" style="--p:70; --c: var(--primary-orange)">
-                  <div class="circle"><div class="inner-circle"><span class="skill-icon">React</span></div></div>
+                <div
+                  class="skill-card"
+                  data-category="frontend"
+                  style="--p: 70; --c: var(--primary-orange)"
+                >
+                  <div class="circle">
+                    <div class="inner-circle">
+                      <span class="skill-icon">React</span>
+                    </div>
+                  </div>
                   <p class="skill-percent">70%</p>
                   <h3>React</h3>
                 </div>
-                <div class="skill-card" data-category="frontend" style="--p:90; --c: var(--primary-orange)">
-                  <div class="circle"><div class="inner-circle"><span class="skill-icon">TW</span></div></div>
+                <div
+                  class="skill-card"
+                  data-category="frontend"
+                  style="--p: 90; --c: var(--primary-orange)"
+                >
+                  <div class="circle">
+                    <div class="inner-circle">
+                      <span class="skill-icon">TW</span>
+                    </div>
+                  </div>
                   <p class="skill-percent">90%</p>
                   <h3>Tailwind CSS</h3>
                 </div>
 
                 <!-- Backend -->
-                <div class="skill-card" data-category="backend" style="--p:65; --c: var(--primary-orange)">
-                  <div class="circle"><div class="inner-circle"><span class="skill-icon">PHP</span></div></div>
+                <div
+                  class="skill-card"
+                  data-category="backend"
+                  style="--p: 65; --c: var(--primary-orange)"
+                >
+                  <div class="circle">
+                    <div class="inner-circle">
+                      <span class="skill-icon">PHP</span>
+                    </div>
+                  </div>
                   <p class="skill-percent">65%</p>
                   <h3>PHP</h3>
                 </div>
-                <div class="skill-card" data-category="backend" style="--p:55; --c: var(--primary-orange)">
-                  <div class="circle"><div class="inner-circle"><span class="skill-icon">Node</span></div></div>
+                <div
+                  class="skill-card"
+                  data-category="backend"
+                  style="--p: 55; --c: var(--primary-orange)"
+                >
+                  <div class="circle">
+                    <div class="inner-circle">
+                      <span class="skill-icon">Node</span>
+                    </div>
+                  </div>
                   <p class="skill-percent">55%</p>
                   <h3>Node.js</h3>
                 </div>
 
                 <!-- Database -->
-                <div class="skill-card" data-category="database" style="--p:70; --c: var(--primary-orange)">
-                  <div class="circle"><div class="inner-circle"><span class="skill-icon">MySQL</span></div></div>
+                <div
+                  class="skill-card"
+                  data-category="database"
+                  style="--p: 70; --c: var(--primary-orange)"
+                >
+                  <div class="circle">
+                    <div class="inner-circle">
+                      <span class="skill-icon">MySQL</span>
+                    </div>
+                  </div>
                   <p class="skill-percent">70%</p>
                   <h3>MySQL</h3>
                 </div>
-                <div class="skill-card" data-category="database" style="--p:60; --c: var(--primary-orange)">
-                  <div class="circle"><div class="inner-circle"><span class="skill-icon">Mongo</span></div></div>
+                <div
+                  class="skill-card"
+                  data-category="database"
+                  style="--p: 60; --c: var(--primary-orange)"
+                >
+                  <div class="circle">
+                    <div class="inner-circle">
+                      <span class="skill-icon">Mongo</span>
+                    </div>
+                  </div>
                   <p class="skill-percent">60%</p>
                   <h3>MongoDB</h3>
                 </div>
 
                 <!-- Mobile -->
-                <div class="skill-card" data-category="mobile" style="--p:75; --c: var(--primary-orange)">
-                  <div class="circle"><div class="inner-circle"><span class="skill-icon">Android</span></div></div>
+                <div
+                  class="skill-card"
+                  data-category="mobile"
+                  style="--p: 75; --c: var(--primary-orange)"
+                >
+                  <div class="circle">
+                    <div class="inner-circle">
+                      <span class="skill-icon">Android</span>
+                    </div>
+                  </div>
                   <p class="skill-percent">75%</p>
                   <h3>Kotlin</h3>
                 </div>
 
                 <!-- Tools -->
-                <div class="skill-card" data-category="tools" style="--p:80; --c: var(--primary-orange)">
-                  <div class="circle"><div class="inner-circle"><span class="skill-icon">Git</span></div></div>
+                <div
+                  class="skill-card"
+                  data-category="tools"
+                  style="--p: 80; --c: var(--primary-orange)"
+                >
+                  <div class="circle">
+                    <div class="inner-circle">
+                      <span class="skill-icon">Git</span>
+                    </div>
+                  </div>
                   <p class="skill-percent">80%</p>
                   <h3>Git</h3>
                 </div>
-                <div class="skill-card" data-category="tools" style="--p:80; --c: var(--primary-orange)">
-                  <div class="circle"><div class="inner-circle"><span class="skill-icon">VS</span></div></div>
+                <div
+                  class="skill-card"
+                  data-category="tools"
+                  style="--p: 80; --c: var(--primary-orange)"
+                >
+                  <div class="circle">
+                    <div class="inner-circle">
+                      <span class="skill-icon">VS</span>
+                    </div>
+                  </div>
                   <p class="skill-percent">80%</p>
                   <h3>VS Code</h3>
                 </div>
-                <div class="skill-card" data-category="tools" style="--p:85; --c: var(--primary-orange)">
-                  <div class="circle"><div class="inner-circle"><span class="skill-icon">Fg</span></div></div>
+                <div
+                  class="skill-card"
+                  data-category="tools"
+                  style="--p: 85; --c: var(--primary-orange)"
+                >
+                  <div class="circle">
+                    <div class="inner-circle">
+                      <span class="skill-icon">Fg</span>
+                    </div>
+                  </div>
                   <p class="skill-percent">85%</p>
                   <h3>Figma</h3>
                 </div>
@@ -703,17 +998,39 @@
                   <small class="error" data-for="message"></small>
                 </div>
                 <button type="submit" class="contact-submit">
-                  Send Message
+                  <span>Send Message</span>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
                 </button>
-                <p id="form-status" role="status" aria-live="polite" class="form-status" hidden></p>
+                <p
+                  id="form-status"
+                  role="status"
+                  aria-live="polite"
+                  class="form-status"
+                  hidden
+                ></p>
               </div>
             </form>
-            <div id="contact-success" class="contact-success" role="status" aria-live="polite">
+            <div
+              id="contact-success"
+              class="contact-success"
+              role="status"
+              aria-live="polite"
+            >
               <strong>Thank you!</strong> Your message was sent successfully.
             </div>
-            <div class="alt-contact">
-             
-            </div>
+            <div class="alt-contact"></div>
           </div>
         </div>
       </section>
@@ -785,19 +1102,40 @@
     <!-- Success Modal -->
     <div id="success-modal" class="modal" aria-hidden="true">
       <div class="modal-backdrop" data-close="true"></div>
-      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc" tabindex="-1">
-        <div class="modal-icon" aria-hidden="true"><i class='bx bx-check'></i></div>
+      <div
+        class="modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        aria-describedby="modal-desc"
+        tabindex="-1"
+      >
+        <div class="modal-icon" aria-hidden="true">
+          <i class="bx bx-check"></i>
+        </div>
         <h3 id="modal-title" class="modal-title">Message Sent Successfully!</h3>
-        <p id="modal-desc" class="modal-subtitle">Thank you for reaching out. I'll get back to you as soon as possible.</p>
+        <p id="modal-desc" class="modal-subtitle">
+          Thank you for reaching out. I'll get back to you as soon as possible.
+        </p>
         <div class="modal-actions">
-          <button id="modal-ok" class="modal-ok" type="button" aria-label="Close success dialog">OK</button>
+          <button
+            id="modal-ok"
+            class="modal-ok"
+            type="button"
+            aria-label="Close success dialog"
+          >
+            OK
+          </button>
         </div>
       </div>
     </div>
 
     <!-- EmailJS SDK: required for email sending -->
     <!-- Paste from CDN; keep before main.js so it's available -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+      defer
+    ></script>
     <script src="assets/js/main.js" defer></script>
   </body>
 </html>

@@ -307,6 +307,13 @@
   --page-x-pad: clamp(16px, 5vw, 72px);
   /* Offset for sticky header when scrolling to anchors */
   --header-offset: 84px;
+  /* Theme variables for About Skills card */
+  --theme-orange: #ff6b00;
+  --theme-dark: #0f0f0f;
+  --card-surface: #141414;
+  --border-color: #2a2a2a;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
 }
 .dark-theme {
   --color-bg: #0f1114;
@@ -535,87 +542,101 @@ select {
 }
 /* About: Key Skills card */
 .about-skills-card {
-  /* Modern glassy panel with subtle accent glow */
-  background: radial-gradient(1000px 500px at -20% -40%, rgba(255, 138, 61, 0.12), transparent 45%),
-              linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
-  border: 1px solid var(--color-border);
-  border-radius: 18px;
-  padding: 1.2rem 1.2rem 1rem;
-  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08), 0 0 18px rgba(255, 138, 61, 0.08);
-  backdrop-filter: blur(6px) saturate(140%);
+  background: var(--card-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
 }
-.dark-theme .about-skills-card {
-  box-shadow: 0 0 0 1px rgba(255, 138, 61, 0.12),
-              0 8px 24px rgba(0,0,0,0.35);
+.about-skills-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--theme-orange), transparent);
+  opacity: 0.7;
 }
 .about-skills-header {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.6rem;
+  gap: 15px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 15px;
 }
-.about-skills-header i { color: var(--color-accent); font-size: 1.3rem; }
+.header-icon-box {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 107, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--theme-orange);
+  font-size: 20px;
+}
 .about-skills-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
   margin: 0;
-  font-size: 1.5rem;
-  font-weight: 900;
-  letter-spacing: -0.2px;
 }
 .about-skills-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.9rem 1.1rem;
+  gap: 30px;
+}
+@media (max-width: 768px) {
+  .about-skills-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .ask-col-title {
-  margin: 0 0 0.5rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--color-text-light);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+.ask-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .ask-item {
-  /* Modern pill with glass border and accent glow on hover */
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.75rem 1rem;
-  border-radius: 14px;
-  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
-  position: relative;
-  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+  cursor: default;
 }
-.ask-item::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: 16px;
-  pointer-events: none;
-  background: radial-gradient(600px 300px at 0% 0%, rgba(255, 138, 61, 0.18), transparent 45%);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-.ask-item .ask-icon {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 28px; height: 28px;
-  border-radius: 8px;
-  background: rgba(255, 138, 61, 0.1);
-  color: var(--color-accent);
-}
-.ask-item .ask-icon i { font-size: 18px; }
-.ask-item .ask-text { font-weight: 800; font-size: 0.98rem; letter-spacing: 0.02em; }
 .ask-item:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255, 138, 61, 0.45);
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18), 0 0 24px rgba(255, 138, 61, 0.22);
+  background: rgba(255, 107, 0, 0.08);
+  border-color: rgba(255, 107, 0, 0.3);
+  transform: translateX(5px);
 }
-.ask-item:hover::before { opacity: 1; }
-.ask-item:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px #081b29, 0 0 0 5px rgba(255, 138, 61, 0.85);
+.ask-icon {
+  font-size: 24px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
 }
-@media (max-width: 700px) {
-  .about-skills-grid { grid-template-columns: 1fr; }
+.ask-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.ask-icon i {
+  transition: transform 0.3s ease;
+}
+.ask-item:hover .ask-icon i {
+  transform: scale(1.1);
 }
 .about-timeline {
   display: flex;
@@ -2127,22 +2148,48 @@ select {
     0 0 26px rgba(255, 138, 61, 0.35);
 }
 .contact-submit {
-  align-self: flex-start;
-  padding: 0.95rem 1.5rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 138, 61, 0.65);
-  background: linear-gradient(180deg, #ff9a40 0%, #ff6a00 100%);
-  color: #0b0f16;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5), 0 0 26px rgba(255, 138, 61, 0.35);
+  /* Modern Send Button */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px; /* Space between text and icon */
+
+  background-color: #ff6b00; /* Brand Orange */
+  color: #ffffff;
+
+  padding: 14px 32px;
+  border: none;
+  border-radius: 50px; /* Modern Pill Shape */
+
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
-  transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.2s ease;
+
+  /* Smooth Transition for hover effects */
+  transition: all 0.3s ease;
+
+  /* Subtle Glow Shadow */
+  box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
 }
+/* Hover Effects */
 .contact-submit:hover {
-  filter: brightness(1.08);
-  transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 42px rgba(255, 138, 61, 0.45);
+  background-color: #e65c00; /* Slightly darker orange */
+  transform: translateY(-3px); /* Lifts up slightly */
+  box-shadow: 0 8px 25px rgba(255, 107, 0, 0.5); /* Shadow grows */
+}
+/* Icon Animation */
+.contact-submit svg {
+  transition: transform 0.3s ease;
+}
+/* When button is hovered, make the plane fly */
+.contact-submit:hover svg {
+  transform: translateX(5px) rotate(-10deg);
+}
+/* Active/Click Effect */
+.contact-submit:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(255, 107, 0, 0.3);
 }
 .error {
   color: var(--color-danger);
