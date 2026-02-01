@@ -1221,8 +1221,15 @@ select {
   .hero-layout {
     flex-direction: column;
     text-align: left;
-    gap: 3rem;
+    gap: 2rem;
   }
+}
+
+/* Phone: reduce top spacing before profile image section */
+@media (max-width: 700px) {
+  .hero { padding: 2.8rem 0 3rem; }
+  .hero-layout { gap: 0.6rem; }
+  .hero-right { margin-top: 0; }
 }
 .hero-left {
   flex: 1 1 560px;
