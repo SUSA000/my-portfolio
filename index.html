@@ -34,6 +34,7 @@
       rel="stylesheet"
     />
     <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </head>
   <body>
     <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
@@ -86,7 +87,7 @@
       <section id="hero" class="hero" aria-labelledby="hero-heading">
         <div class="hero-layout">
           <div class="hero-left">
-            <p class="hero-greeting" id="hero-heading">Hi, I’m </p>
+            <p class="hero-greeting" id="hero-heading">Hi, I’m</p>
             <h1 class="hero-name">
               <span class="accent">Sushan Tharuka</span>
             </h1>
@@ -182,10 +183,6 @@
       >
         <div class="about-header">
           <h2 id="about-title">About <span class="accent">Me</span></h2>
-          <p class="about-subtitle">
-            Data-driven problem solver turning raw data into clear, actionable
-            insight.
-          </p>
         </div>
         <div class="about-grid">
           <!-- Left Column: Identity & Description -->
@@ -426,7 +423,11 @@
             computational techniques to real-world datasets.
           </p>
           <!-- Mobile Crypto Scanner Animation (appears above filters) -->
-          <div id="cryptoScanner" class="crypto-scanner" aria-label="Crypto scanner animation">
+          <div
+            id="cryptoScanner"
+            class="crypto-scanner"
+            aria-label="Crypto scanner animation"
+          >
             <div class="scanner-line" aria-hidden="true"></div>
             <div class="scanner-belt" aria-hidden="true">
               <div class="belt-track"></div>
@@ -826,6 +827,15 @@
             Data Science undergraduate focused on practical analysis, machine
             learning, and clear communication of insights.
           </p>
+
+          <lottie-player
+            src="assets/js/experience-anim.json"
+            background="transparent"
+            speed="1"
+            style="width: 300px; height: 300px"
+            loop
+            autoplay
+          ></lottie-player>
           <div class="exp-grid">
             <!-- Card: Undergraduate -->
             <article class="exp-card" aria-label="Data Science Undergraduate">
@@ -1033,7 +1043,7 @@
               aria-live="polite"
             >
               <strong>Thank you!</strong> Your message was sent successfully.
-            </div>
+          </div>
             <div class="alt-contact"></div>
           </div>
         </div>
