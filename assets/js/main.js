@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Make sure this runs after the HTML is loaded
 const typed = new Typed(".text", {
-  strings: ["Data Analyst", "Data Science Undergraduate", "Full Stack Developer."],
+  strings: ["Data Analyst", "Aspiring Data Scientist","UI/UX Designer", "Full Stack Developer."],
   typeSpeed: 100, // typing speed (ms per character)
   backSpeed: 60, // backspacing speed
   backDelay: 1000, // pause before erasing

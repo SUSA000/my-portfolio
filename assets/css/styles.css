@@ -1,3 +1,9 @@
+/* Hide Skills logo panel on mobile */
+@media (max-width: 768px) {
+  .skills-left,
+  .skills-logo-grid { display: none !important; }
+  .skills-right { width: 100%; }
+}
 /* Crypto Scanner (Mobile Only) */
 .crypto-scanner {
   display: none;
@@ -1488,6 +1494,12 @@ select {
   color: var(--color-accent);
   border: 2px solid var(--color-accent);
 }
+.hero-actions .btn.outline:hover {
+  background-color: var(--color-accent);
+  color: #081b29;
+  box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+  transform: translateY(-2px);
+}
 .btn.secondary {
   background: var(--color-bg-alt);
   color: var(--color-text);
@@ -1552,6 +1564,11 @@ select {
 }
 .btn.btn-download:active {
   transform: translateY(0);
+}
+/* Mobile: stack hero buttons full-width */
+@media (max-width: 768px) {
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; }
 }
 .hero-cta .btn:hover {
   box-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-accent),
