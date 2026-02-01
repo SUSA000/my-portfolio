@@ -204,19 +204,23 @@ const typed = new Typed(".text", {
       card.className = "project-card fade-in";
       const demoHref = p.demo || "";
       const codeHref = p.source || "";
+      const demoLabel = p.demo_label || "Live Demo";
+      const demoIcon = p.demo_icon || ""; // e.g., 'figma'
       const thumbStyle = p.image
         ? `style=\"background-image:url('${p.image}')\"`
         : "";
+      let demoIconMarkup = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M14 3h7v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+               <path d="M10 14L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+               <path d="M14 10v7a4 4 0 0 1-4 4H5a4 4 0 0 1-4-4v-5a4 4 0 0 1 4-4h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+             </svg>`;
+      if (demoIcon === "figma") demoIconMarkup = `<i class="bx bxl-figma" aria-hidden="true"></i>`;
+      if (demoIcon === "play") demoIconMarkup = `<i class="bx bx-play" aria-hidden="true"></i>`;
+
       const demoBtn = demoHref
-        ? `<a class="btn-demo" href="${demoHref}" target="_blank" rel="noopener" aria-label="Live demo for ${p.name}">
-             <span class="btn-icon" aria-hidden="true">
-               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path d="M14 3h7v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                 <path d="M10 14L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                 <path d="M14 10v7a4 4 0 0 1-4 4H5a4 4 0 0 1-4-4v-5a4 4 0 0 1 4-4h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-               </svg>
-             </span>
-             <span class="btn-text">Live Demo</span>
+        ? `<a class="btn-demo" href="${demoHref}" target="_blank" rel="noopener" aria-label="${demoLabel} for ${p.name}">
+             <span class="btn-icon" aria-hidden="true">${demoIconMarkup}</span>
+             <span class="btn-text">${demoLabel}</span>
            </a>`
         : "";
       const codeBtn = codeHref
@@ -238,7 +242,7 @@ const typed = new Typed(".text", {
           .map((t) => `<span>${t}</span>`)
           .join("")}</div>
         <div class="project-links">
-          ${demoBtn}${codeBtn}
+          ${codeBtn}${demoBtn}
         </div>
       `;
       fragment.appendChild(card);
