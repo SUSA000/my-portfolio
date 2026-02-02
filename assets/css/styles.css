@@ -1578,6 +1578,12 @@ select {
 .btn.btn-download:active {
   transform: translateY(0);
 }
+/* Generic disabled state for buttons/links */
+.is-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 /* Mobile: stack hero buttons full-width */
 @media (max-width: 768px) {
   .hero-actions { flex-direction: column; }

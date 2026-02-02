@@ -452,26 +452,35 @@ function showSuccessModal() {
   document.addEventListener("keydown", onKey, { once: true });
 }
 
-// About CV buttons: download + view
+// About CV buttons: download + view (disabled)
 document.addEventListener("DOMContentLoaded", () => {
   const btnDownload = document.getElementById("btnCvDownload");
   const btnView = document.getElementById("btnCvView");
-  const cvPath = "assets/img/sushan%20tharuka%20cv%20spar.pdf";
+  const cvAnchors = document.querySelectorAll('a[aria-label="Download CV"]');
 
+  // Deny CV access across the site
+  const deny = (e) => {
+    if (e) e.preventDefault();
+    alert("CV download and viewing are currently disabled.");
+  };
+
+  // Disable hero/nav anchors that have download CV
+  cvAnchors.forEach((a) => {
+    a.setAttribute("aria-disabled", "true");
+    a.classList.add("is-disabled");
+    a.addEventListener("click", deny);
+  });
+
+  // Disable About section buttons
   if (btnDownload) {
-    btnDownload.addEventListener("click", () => {
-      const a = document.createElement("a");
-      a.href = cvPath;
-      a.download = "Sushan_Tharuka_CV.pdf";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    });
+    btnDownload.setAttribute("aria-disabled", "true");
+    btnDownload.classList.add("is-disabled");
+    btnDownload.addEventListener("click", deny);
   }
   if (btnView) {
-    btnView.addEventListener("click", () => {
-      window.open(cvPath, "_blank", "noopener");
-    });
+    btnView.setAttribute("aria-disabled", "true");
+    btnView.classList.add("is-disabled");
+    btnView.addEventListener("click", deny);
   }
 });
 
