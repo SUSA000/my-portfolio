@@ -16,7 +16,7 @@
   position: relative;
   width: 100%;
   height: 68px;
-  margin: 14px 0 8px;
+  margin: 14px 0 30px; /* clearer gap before skill filters */
   overflow: hidden;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.04);
@@ -2827,10 +2827,12 @@ body.modal-open { overflow: hidden; }
 }
 .dark-theme .skill-card p { color: #ffffff; }
 @media (max-width: 700px) {
-  .skills-grid { grid-template-columns: repeat(2, minmax(140px, 1fr)); gap: 1rem; }
-  .circle { width: 88px; height: 88px; }
-  .inner-circle { width: 80px; height: 80px; font-size: 0.95rem; }
-  .skill-card p { font-size: 0.9rem; }
+  /* More compact 3-column circular skills on mobile */
+  .skills-grid { grid-template-columns: repeat(3, minmax(70px, 1fr)); gap: 0.7rem; }
+  .circle { width: 68px; height: 68px; margin-bottom: 10px; }
+  .inner-circle { width: 60px; height: 60px; font-size: 0.8rem; }
+  .skill-card h3 { font-size: 0.9rem; }
+  .skill-card p { font-size: 0.8rem; }
 }
 
 /* Respect reduced-motion preferences on all devices */
