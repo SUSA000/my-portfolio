@@ -452,35 +452,46 @@ function showSuccessModal() {
   document.addEventListener("keydown", onKey, { once: true });
 }
 
-// About CV buttons: download + view (disabled)
+// About CV buttons: download + view (ENABLED)
 document.addEventListener("DOMContentLoaded", () => {
   const btnDownload = document.getElementById("btnCvDownload");
   const btnView = document.getElementById("btnCvView");
   const cvAnchors = document.querySelectorAll('a[aria-label="Download CV"]');
 
-  // Deny CV access across the site
-  const deny = (e) => {
-    if (e) e.preventDefault();
-    alert("CV download and viewing are currently disabled.");
-  };
+  // Single source of truth for CV file path
+  const CV_URL = "assets/img/SUSHAN_THARUKA2026.pdf";
 
-  // Disable hero/nav anchors that have download CV
+  // Ensure header/hero anchors point to the latest CV
   cvAnchors.forEach((a) => {
-    a.setAttribute("aria-disabled", "true");
-    a.classList.add("is-disabled");
-    a.addEventListener("click", deny);
+    a.href = CV_URL;
+    a.setAttribute("download", "");
+    a.removeAttribute("aria-disabled");
+    a.classList.remove("is-disabled");
   });
 
-  // Disable About section buttons
+  // About section: Download button (programmatic download)
   if (btnDownload) {
-    btnDownload.setAttribute("aria-disabled", "true");
-    btnDownload.classList.add("is-disabled");
-    btnDownload.addEventListener("click", deny);
+    btnDownload.removeAttribute("aria-disabled");
+    btnDownload.classList.remove("is-disabled");
+    btnDownload.addEventListener("click", (e) => {
+      e.preventDefault();
+      const link = document.createElement("a");
+      link.href = CV_URL;
+      link.download = "SUSHAN_THARUKA2026.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
   }
+
+  // About section: View Online button (open in new tab/browser PDF viewer)
   if (btnView) {
-    btnView.setAttribute("aria-disabled", "true");
-    btnView.classList.add("is-disabled");
-    btnView.addEventListener("click", deny);
+    btnView.removeAttribute("aria-disabled");
+    btnView.classList.remove("is-disabled");
+    btnView.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.open(CV_URL, "_blank", "noopener");
+    });
   }
 });
 
