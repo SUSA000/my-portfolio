@@ -298,13 +298,21 @@ const typed = new Typed(".text", {
       const submitBtn = contactForm.querySelector(".contact-submit");
       const originalText = submitBtn ? submitBtn.textContent : "";
       const statusEl = document.getElementById("form-status");
+      
+      // 1. Get the animation container
+      const animationContainer = document.getElementById("animation-container"); 
+
       if (statusEl) {
         statusEl.hidden = false;
         statusEl.textContent = "Sending...";
       }
+      
+      // 2. Hide the button and show the animation
       if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Sending...";
+        submitBtn.style.display = "none"; 
+      }
+      if (animationContainer) {
+        animationContainer.style.display = "flex";
       }
 
       try {
@@ -370,7 +378,6 @@ const typed = new Typed(".text", {
           statusEl.textContent = "Sorry, sending failed. Please try again.";
       } finally {
         // Clean up any alias hidden inputs
-        // Prevent accumulating hidden fields over repeated submissions
         const aliasNames = [
           "from_name",
           "from_email",
@@ -385,15 +392,23 @@ const typed = new Typed(".text", {
           const el = contactForm.querySelector(`[name="${n}"]`);
           if (el && el.type === "hidden") el.remove();
         });
+        
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = originalText || "Send Message";
         }
-        // Hide status after a few seconds
+        
+        // 3. Hide status and animation, restore button after 4 seconds
         setTimeout(() => {
           if (statusEl) {
             statusEl.hidden = true;
             statusEl.textContent = "";
+          }
+          if (animationContainer) {
+            animationContainer.style.display = "none"; // Hide Lottie
+          }
+          if (submitBtn) {
+            submitBtn.style.display = ""; // Bring button back
           }
         }, 4000);
       }
@@ -888,11 +903,17 @@ function animate() {
   // Fully clear frame to keep site background visible
   ctx.clearRect(0, 0, w, h);
 
-  for (let i = 0; i < particlesArray.length; i++) {
-    particlesArray[i].update();
-    particlesArray[i].draw();
+  // Only show mesh animation in dark mode
+  const isDarkMode = document.body.classList.contains('dark-theme');
+  
+  if (isDarkMode) {
+    for (let i = 0; i < particlesArray.length; i++) {
+      particlesArray[i].update();
+      particlesArray[i].draw();
+    }
+    connect();
   }
-  connect();
+  
   requestAnimationFrame(animate);
 }
 
@@ -1084,4 +1105,29 @@ document.addEventListener("DOMContentLoaded", () => {
   } catch (e) {
     console.warn("Crypto scanner init failed:", e);
   }
+});
+
+/* Social Lottie Hover Animation Handler */
+document.addEventListener("DOMContentLoaded", () => {
+  const socialLinks = document.querySelectorAll(".social-lottie");
+  
+  socialLinks.forEach((link) => {
+    const lottiePlayer = link.querySelector("lottie-player");
+    
+    if (lottiePlayer) {
+      // Play animation on hover
+      link.addEventListener("mouseenter", () => {
+        if (lottiePlayer && typeof lottiePlayer.play === "function") {
+          lottiePlayer.play();
+        }
+      });
+      
+      // Optional: restart on mouse leave for continuous effect
+      link.addEventListener("mouseleave", () => {
+        if (lottiePlayer && typeof lottiePlayer.play === "function") {
+          lottiePlayer.play();
+        }
+      });
+    }
+  });
 });
