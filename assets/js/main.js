@@ -474,7 +474,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const cvAnchors = document.querySelectorAll('a[aria-label="Download CV"]');
 
   // Single source of truth for CV file path
-  const CV_URL = "assets/img/SUSHAN_THARUKA2026.pdf";
+  const CV_URL = "assets/img/sushan -DA cv.pdf";
 
   // Ensure header/hero anchors point to the latest CV
   cvAnchors.forEach((a) => {
@@ -492,7 +492,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const link = document.createElement("a");
       link.href = CV_URL;
-      link.download = "SUSHAN_THARUKA2026.pdf";
+      link.download = "sushan -DA cv.pdf";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
