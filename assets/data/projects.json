@@ -27,14 +27,49 @@
     "demo_icon": "figma",
     "image": "assets/img/PhoenixAi.png"
   },
-  {
-    "name": "CSS Design System",
-    "description": "A lightweight design system with utility classes and component examples.",
-    "tags": ["Design System", "CSS", "Docs"],
-    "demo": "https://yourdomain.com/design-system",
-    "source": "https://github.com/yourusername/design-system",
-    "image": "assets/img/1_Sz3KyFn9rdM9M3pHEHScSA.jpg"
+ {
+    "name": "CampLanka",
+    "description": "Full-stack camping platform featuring destination guides and equipment rentals with JWT authentication and full CRUD capabilities.",
+    "tags": ["MongoDB", "Express", "React", "Node.js", "JWT"],
+    "demo": "#",
+    "source": "#",
+    "image": "assets/img/camplanka.jpg"
   },
+  {
+    "name": "SuperStore DWBI Pipeline",
+    "description": "End-to-end Data Warehouse and Business Intelligence pipeline featuring custom ETL processes and a star schema architecture.",
+    "tags": ["SSIS", "SQL Server", "ETL", "Data Warehousing"],
+    "demo": "#",
+    "source": "#",
+    "image": "assets/img/dwbi-pipeline.jpg"
+  },
+  {
+    "name": "CineMatch: A Movie Recommendation System",
+    "description": "An AI-driven recommendation engine that utilizes collaborative filtering and user interaction data to deliver highly personalized movie suggestions.",
+    "tags": ["Python", "Machine Learning", "Scikit-Learn", "Pandas", "Flask", "NumPy"],
+    "demo": "https://movie-recommendation-system-psi-steel.vercel.app",
+    "source": "https://github.com/SUSA000/Movie-Recommendation-System.git",
+    "image": "assets/img/movie-rec.png"
+  },
+  {
+    "name": "Car Sales Analytics Dashboard",
+    "description": "Interactive analytics dashboard visualizing car sales data, tracking key performance metrics and regional market trends.",
+    "tags": ["Power BI","Business Intelligence","Data Analytics","Dashboard Design","DAX","Sales Analytics"],
+    "demo": "assets/video/car-sales-demo.mp4",
+    "demo_label": "Watch",
+    "demo_icon": "play",
+    "source": "https://github.com/SUSA000/PowerBI-Car-Sales-Dashboard.git",
+    "image": "assets/img/car-sales.png"
+  },
+  {
+    "name": "Smart Campus - Nexus",
+    "description": "A comprehensive campus management platform designed to streamline operations and enhance student services.",
+    "tags": ["Web Development", "UI/UX", "System Design"],
+    "demo": "#",
+    "source": "#",
+    "image": "assets/img/smart-campus.jpg"
+  },
+
    {
     "name": "Responsive Portfolio",
     "description": "A modern, accessible personal site with dark mode and dynamic project loading.",
