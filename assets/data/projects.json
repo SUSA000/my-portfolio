@@ -33,7 +33,7 @@
     "tags": ["MongoDB", "Express", "React", "Node.js", "JWT"],
     "demo": "#",
     "source": "https://github.com/SUSA000/Camplanka.git",
-    "image": "assets/img/camplanka.jpg"
+    "image": "assets/img/Camplanka.png"
   },
   {
     "name": "SuperStore DWBI Pipeline",
@@ -41,7 +41,7 @@
     "tags": ["SSIS", "SQL Server", "ETL", "Data Warehousing"],
     "demo": "#",
     "source": "https://github.com/SUSA000/SuperStore-DWBI-Pipeline.git",
-    "image": "assets/img/dwbi-pipeline.jpg"
+    "image": "assets/img/SuperStore_pipeline.png"
   },
   {
     "name": "CineMatch: A Movie Recommendation System",
