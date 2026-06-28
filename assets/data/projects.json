@@ -31,7 +31,7 @@
     "name": "CampLanka",
     "description": "Full-stack camping platform featuring destination guides and equipment rentals with JWT authentication and full CRUD capabilities.",
     "tags": ["MongoDB", "Express", "React", "Node.js", "JWT"],
-    "demo": "#",
+    
     "source": "https://github.com/SUSA000/Camplanka.git",
     "image": "assets/img/Camplanka.png"
   },
@@ -39,7 +39,7 @@
     "name": "SuperStore DWBI Pipeline",
     "description": "End-to-end Data Warehouse and Business Intelligence pipeline featuring custom ETL processes and a star schema architecture.",
     "tags": ["SSIS", "SQL Server", "ETL", "Data Warehousing"],
-    "demo": "#",
+    
     "source": "https://github.com/SUSA000/SuperStore-DWBI-Pipeline.git",
     "image": "assets/img/SuperStore_pipeline.png"
   },
@@ -65,9 +65,9 @@
     "name": "Smart Campus - Nexus",
     "description": "A comprehensive campus management platform designed to streamline operations and enhance student services.",
     "tags": ["Web Development", "UI/UX", "System Design"],
-    "demo": "#",
+  
     "source": "https://github.com/SUSA000/smart-campus---nexus.git",
-    "image": "assets/img/smart-campus.jpg"
+    "image": "assets/img/Smart_campus.png"
   },
 
    {
